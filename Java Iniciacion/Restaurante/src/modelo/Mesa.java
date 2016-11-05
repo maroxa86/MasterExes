@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package restaurante;
+package modelo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,7 +92,7 @@ public class Mesa {
         this.comensales.add(cliente);
     }
 
-    boolean mesaDisponible(int comensales) {
+    public boolean mesaDisponible(int comensales) {
         if(this.sillas >= comensales && this.comensales.isEmpty()){
             return true;
         }
