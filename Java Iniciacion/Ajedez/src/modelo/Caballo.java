@@ -1,9 +1,11 @@
 package modelo;
 
+import enums.Colores;
+
 public class Caballo extends Pieza {
 
-	public Caballo(){
-		super();
+	public Caballo(Colores color){
+		super('C', color);
 	}
 	
 	@Override

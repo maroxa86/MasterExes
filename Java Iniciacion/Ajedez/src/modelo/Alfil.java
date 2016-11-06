@@ -1,11 +1,13 @@
 package modelo;
 
-public class Alfil extends Pieza {
+import enums.Colores;
 
-	public Alfil(){
-		super();
-	}
+public class Alfil extends Pieza {
 	
+	public Alfil(Colores color){
+		super('A', color);
+	}
+
 	@Override
 	protected void moverPieza() {
 		// TODO Auto-generated method stub
