@@ -80,4 +80,23 @@ public class Rey extends Pieza {
 		}
 		return false;
 	}
+
+	public boolean jaqueMate(Casilla casillaRey) {
+		Casilla superior = new Casilla(casillaRey.getFila() + 1, casillaRey.getFila());
+		Casilla inferior = new Casilla(casillaRey.getFila() - 1, casillaRey.getFila());
+		Casilla derechaArriba = new Casilla(casillaRey.getFila() + 1, casillaRey.getFila() + 1);
+		Casilla izquierdaArriba = new Casilla(casillaRey.getFila() + 1, casillaRey.getFila() - 1);
+		Casilla derechaAbajo = new Casilla(casillaRey.getFila() - 1, casillaRey.getFila() + 1);
+		Casilla izquierdaAbajo = new Casilla(casillaRey.getFila() - 1, casillaRey.getFila() - 1);
+		
+		if(superior.getColumna() >= 0 && superior.getColumna() <= 7
+			&& superior.getFila() >= 0 && superior.getFila() <= 7){
+			if(!jaque(superior) && getCasillas()[superior.getFila()][superior.getColumna()].getPieza() == null){
+				return false;
+			}
+			
+		}
+			
+		return true;
+	}
 }

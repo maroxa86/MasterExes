@@ -182,9 +182,42 @@ public class Tablero {
 			passante(piezaOrigen, casillaDestino);
 		}
 		
-		//TODO: SEGUIR A PARTIR DE AQUI
+		casillaOrigen.setPieza(null);
+		piezaOrigen.setCasilla(casillaDestino);
+		casillaDestino.setPieza(piezaOrigen);
+		piezaOrigen.incrementarMovimientos();
 		
-		return false;
+		if(((turno == blanco && casillaDestino.getFila() == 0) || (turno == negro && casillaDestino.getFila() == 7)) && piezaOrigen instanceof Peon){
+			Pieza reina = new Reina(turno.getColor().getColor());
+			reina.setCasilla(casillaDestino);
+			reina.setMovimientos(piezaOrigen.getMovimientos());
+			reina.setJugador(turno);
+			reina.setCasillas(this.casillas);
+			casillaDestino.setPieza(reina);
+		}
+		
+		Casilla reyOponente = turno.getOponente().getRey().getCasilla();
+		
+		if(turno.getOponente().getRey().jaque(reyOponente)){
+			if(turno.getColor() == Colores.BLANCO){
+				jaqueNegras = true;
+				if(negro.getRey().jaqueMate(negro.getRey().getCasilla())){
+					System.out.println("Blancas ganan!!!!!!!!");
+					System.exit(0);
+				}
+			}
+			else{
+				jaqueBlancas = true;
+				if(blanco.getRey().jaqueMate(blanco.getRey().getCasilla())){
+					System.out.println("Negras ganan!!!!!!!!");
+					System.exit(0);
+				}
+			}
+		}
+		
+		turno = (turno == blanco)? negro : blanco;
+		
+		return true;
 	}
 
 	private void passante(Pieza piezaOrigen, Casilla casillaDestino) {
