@@ -1,7 +1,7 @@
 package enums;
 
 public enum Colores {
-	BLANCO("B"), NEGRO("N"), VACIA("x");
+	BLANCO("B"), NEGRO("N");
 	
 	public final String color;
 	
