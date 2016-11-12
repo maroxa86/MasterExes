@@ -96,6 +96,46 @@ public class Rey extends Pieza {
 			}
 			
 		}
+		
+		if(inferior.getColumna() >= 0 && inferior.getColumna() <= 7
+				&& inferior.getFila() >= 0 && inferior.getFila() <= 7){
+			if(!jaque(inferior) && getCasillas()[inferior.getFila()][inferior.getColumna()].getPieza() == null){
+				return false;
+			}
+			
+		}
+		
+		if(derechaArriba.getColumna() >= 0 && derechaArriba.getColumna() <= 7
+				&& derechaArriba.getFila() >= 0 && derechaArriba.getFila() <= 7){
+			if(!jaque(derechaArriba) && getCasillas()[derechaArriba.getFila()][derechaArriba.getColumna()].getPieza() == null){
+				return false;
+			}
+			
+		}
+		
+		if(izquierdaArriba.getColumna() >= 0 && izquierdaArriba.getColumna() <= 7
+				&& izquierdaArriba.getFila() >= 0 && izquierdaArriba.getFila() <= 7){
+			if(!jaque(izquierdaArriba) && getCasillas()[izquierdaArriba.getFila()][izquierdaArriba.getColumna()].getPieza() == null){
+				return false;
+			}
+			
+		}
+		
+		if(derechaAbajo.getColumna() >= 0 && derechaAbajo.getColumna() <= 7
+				&& derechaAbajo.getFila() >= 0 && derechaAbajo.getFila() <= 7){
+			if(!jaque(derechaAbajo) && getCasillas()[derechaAbajo.getFila()][derechaAbajo.getColumna()].getPieza() == null){
+				return false;
+			}
+			
+		}
+		
+		if(izquierdaAbajo.getColumna() >= 0 && izquierdaAbajo.getColumna() <= 7
+				&& izquierdaAbajo.getFila() >= 0 && izquierdaAbajo.getFila() <= 7){
+			if(!jaque(izquierdaAbajo) && getCasillas()[izquierdaAbajo.getFila()][izquierdaAbajo.getColumna()].getPieza() == null){
+				return false;
+			}
+			
+		}	
 			
 		return true;
 	}
