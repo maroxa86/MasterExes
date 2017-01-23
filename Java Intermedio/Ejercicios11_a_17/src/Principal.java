@@ -89,6 +89,7 @@ public class Principal {
 					System.out.print(rsm.getColumnLabel(4) + "\n");
 
 					System.out.print(rs.getString(1) + "\t");
+					System.out.print(rs.getString(1) + "\t");
 					System.out.print(rs.getInt(2) + "\t");
 					System.out.print(rs.getBoolean(3) + "\t");
 					System.out.print(rs.getDate(4) + "\n");

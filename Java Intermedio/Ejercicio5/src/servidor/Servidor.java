@@ -1,6 +1,7 @@
 package servidor;
 
 import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileWriter;
@@ -30,7 +31,7 @@ public class Servidor {
 				System.out.println("Cliente conectado");
 				DataOutputStream salidaCliente = new DataOutputStream(cliente.getOutputStream());
 				salidaCliente.writeUTF("Peticion recibida y aceptada");
-
+				DataInputStream dis = new DataInputStream(cliente.getInputStream());
 				BufferedReader entrada = new BufferedReader(new InputStreamReader(cliente.getInputStream()));
 				String mensajeServidor;
 				File fichero = new File("datos.txt");
