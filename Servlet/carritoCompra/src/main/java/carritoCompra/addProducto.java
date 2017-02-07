@@ -51,6 +51,5 @@ public class addProducto extends HttpServlet {
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/mostrarCarrito");
 		rd.forward(request, response);
-		
 	}
 }
