@@ -1,8 +1,8 @@
 package ejercicios;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,24 +37,8 @@ public class TablaMultiplicar extends HttpServlet {
 		processRequest(request, response);
 	}
 
-	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String valor = request.getParameter("valor");
-		response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet MostrarCookies</title>");  
-            out.println("</head>");
-            out.println("<body>");
-            out.println("Tabla de multiplicar del " + valor + "<br/>");
-            for(int i=1; i <= 10; i++){
-            	out.println(valor + " x " + i + " = " + (Integer.parseInt(valor)*i) + "<br/>");
-            }
-            out.println("</body>");
-            out.println("</html>");
-        } finally { 
-            out.close();
-        }
+	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		RequestDispatcher rd = request.getRequestDispatcher("tablaMultiplicar.jsp");
+		rd.forward(request, response);
 	}
 }

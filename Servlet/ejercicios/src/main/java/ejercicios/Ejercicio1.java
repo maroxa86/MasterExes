@@ -1,8 +1,8 @@
 package ejercicios;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,22 +37,9 @@ public class Ejercicio1 extends HttpServlet {
 		processRequest(request, response);
 	}
 
-	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String parametro = request.getParameter("parametro");
-		response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet MostrarCookies</title>");  
-            out.println("</head>");
-            out.println("<body>");
-            out.println("Parametro introducido: " + parametro);
-            out.println("</body>");
-            out.println("</html>");
-        } finally { 
-            out.close();
-        }
+	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		RequestDispatcher rd = request.getRequestDispatcher("ejercicio1.jsp");
+		rd.forward(request, response);
 	}
 
 	
