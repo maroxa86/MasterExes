@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.custom.i18n.resources" value="i18n/literales" />
+
+    <package name="ejercicio2" namespace="/" extends="struts-default">
+        <default-action-ref name="FormularioAction" />
+        
+        <action name="FormularioAction" class="ejercicio2.FormularioAction">
+            <result>/jsp/FormularioPage.jsp</result>
+        </action>
+        
+        <action name="resultadoAction" class="ejercicio2.FormularioAction" method="resultado">
+            <result name="success">/jsp/resultado.jsp</result>
+            <result name="input">/jsp/FormularioPage.jsp</result>
+        </action>
+    </package>
+</struts>
