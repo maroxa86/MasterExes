@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+
+    <package name="ejercicio1" namespace="/" extends="struts-default">
+        <default-action-ref name="FilePageAction" />
+        
+        <action name="FilePageAction" class="ejercicio1.FileUploadAction" method="display">
+            <result name="none">/jsp/fileUploadPage.jsp</result>
+        </action>
+        
+        <action name="UploadFileAction" class="ejercicio1.FileUploadAction">
+        	<interceptor-ref name="fileUpload">
+        		<param name="maxiumSize">102400</param>
+            	<param name="allowedTypes">text/plain</param>
+            </interceptor-ref> 
+            <interceptor-ref name="basicStack"/>
+            <result name="success">/jsp/resultado.jsp</result>
+			<result name="input">/jsp/fileupload.jsp</result>
+        </action>
+    </package>
+</struts>
