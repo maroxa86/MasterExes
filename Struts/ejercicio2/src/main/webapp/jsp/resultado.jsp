@@ -8,12 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<s:property value="%{getText('formulario.nombre')}"/>: <s:property value="nombre"/><br/>
-	<s:property value="%{getText('formulario.apellidos')}"/>: <s:property value="apellidos"/><br/>
-	<s:property value="%{getText('formulario.telefono')}"/>: <s:property value="telefono"/><br/>
-	<s:property value="%{getText('formulario.fechaNacimiento')}"/>: <s:property value="fechaNacimiento"/><br/>
-	<s:property value="%{getText('formulario.sueldo')}"/>: <s:property value="sueldo"/><br/>
-	<s:property value="%{getText('formulario.numHijos')}"/>: <s:property value="numHijos"/><br/>
+	<s:property value="%{getText('formulario.nombre')}"/>: <s:property value="formulario.nombre"/><br/>
+	<s:property value="%{getText('formulario.apellidos')}"/>: <s:property value="formulario.apellidos"/><br/>
+	<s:property value="%{getText('formulario.telefono')}"/>: <s:property value="formulario.telefono"/><br/>
+	<s:property value="%{getText('formulario.fechaNacimiento')}"/>: <s:property value="formulario.fechaNacimiento"/><br/>
+	<s:property value="%{getText('formulario.sueldo')}"/>: <s:property value="formulario.sueldo"/><br/>
+	<s:property value="%{getText('formulario.numHijos')}"/>: <s:property value="formulario.numHijos"/><br/>
 	<s:a action="FormularioAction">Volver</s:a>
 </body>
 </html>

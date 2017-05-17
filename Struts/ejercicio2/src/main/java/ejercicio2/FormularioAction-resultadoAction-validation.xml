@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+ <validators>
+ 	<field name="formulario.nombre">
+ 		<field-validator type="requiredstring">
+ 			<message key="campoobligatorio"/>
+ 		</field-validator>
+ 	</field>
+ 	<field name="formulario.apellidos">
+ 		<field-validator type="requiredstring">
+ 			<message key="campoobligatorio"/>
+ 		</field-validator>
+ 	</field>
+ 	
+ 	<field name="formulario.telefono">
+		<field-validator type="int">
+ 			<param name="min">0</param>
+ 			<message key="camponumerico"/>
+ 		</field-validator>
+ 	</field>
+ 	
+ 	<field name="formulario.fechaNacimiento">
+ 		<field-validator type="date">
+ 			<param name="min">01/01/1990</param>
+            <param name="max">31/12/2017</param>
+ 			<message key="campofecha"/>
+ 		</field-validator>
+ 	</field>
+ 	
+ 	<field name="formulario.sueldo">
+ 		<field-validator type="int">
+ 			<param name="min">0</param>
+ 			<message key="camponumerico"/>
+ 		</field-validator>
+ 	</field>
+ 	
+ 	<field name="formulario.numHijos">
+ 		<field-validator type="int">
+ 			<param name="min">0</param>
+ 			<message key="camponumerico"/>
+ 		</field-validator>
+ 	</field>
+ 	
+ </validators>
