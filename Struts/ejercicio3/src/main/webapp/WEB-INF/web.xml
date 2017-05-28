@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="ejercicio3" version="3.1">
+	<display-name>ejercicio3</display-name>
+	
+	<listener>
+		<listener-class>ejercicio3.listener.AppConfig</listener-class>
+	</listener>
+	
+	<context-param>
+		<param-name>dataSource</param-name>
+		<param-value>java:/comp/env/jdbc/struts</param-value>
+	</context-param>
+	
+	<resource-ref>
+		<description>
+			Descripcion del recurso
+		</description>
+		<res-ref-name>jdbc/struts</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+	
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>

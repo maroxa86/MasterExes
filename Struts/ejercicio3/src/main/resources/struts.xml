@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.custom.i18n.resources" value="i18n/literales" />
+    
+    <package name="default" namespace="/" extends="struts-default">
+
+        <interceptors>    
+            <interceptor name="validacionUsuarioInterceptor" class="ejercicio3.interceptor.ValidacionUsuarioInterceptor" />
+            <interceptor-stack name="authStack">
+                <interceptor-ref name="validacionUsuarioInterceptor"/>
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+        </interceptors>     
+        
+        <default-action-ref name="loginAction"/>
+        
+        <action name="loginAction" class="ejercicio3.action.LoginAction" method="loadFormulario">
+        	<result name="success">jsp/login.jsp</result>
+        	<result name="autenticacion">jsp/login.jsp</result>
+        </action>
+        
+        <action name="checkLoginAction" class="ejercicio3.action.LoginAction" method="resultado">
+        	<result name="success" type="redirectAction">formularioAction</result>
+        	<result name="input">jsp/login.jsp</result>
+        	<result name="autenticacion">jsp/login.jsp</result>
+        </action>
+        
+        <action name="logout" class="ejercicio3.action.LoginAction" method="logout">
+        	<result name="success" type="redirectAction">loginAction</result>
+        </action>
+         
+        <action name="formularioAction" class="ejercicio3.action.FormularioAction" method="loadFormulario">
+        	<interceptor-ref name="authStack"/>
+        	<result name="success">jsp/formulario.jsp</result>
+        	<result name="input">jsp/formulario.jsp</result>
+        	<result name="autenticacion" type="redirectAction">loginAction</result>
+        </action>
+        
+		<action name="resultadoAction" class="ejercicio3.action.FormularioAction" method="resultado">
+			<interceptor-ref name="authStack"/>
+			<result name="success">jsp/resultado.jsp</result>
+			<result name="input">jsp/formulario.jsp</result>
+			<result name="autenticacion" type="redirectAction">loginAction</result>
+		</action>
+		
+    </package>
+</struts>

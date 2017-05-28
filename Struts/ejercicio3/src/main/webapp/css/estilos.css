@@ -1,0 +1,129 @@
+#formDiv 
+{
+	position: relative; 
+	margin-left: 4%;
+	margin-top: 2%;
+	width: 800px;
+	text-align: left; 
+	background:#fefefe;
+	border-style:solid;
+	border-width:1px;
+	border-color:#eaeaea;
+	padding: 14px;
+}
+
+.input
+{
+	width:200px;
+	height:18px;
+	border:1px solid;
+	border-color:#6f6e6e;
+	border-width:1px;
+	border-color:#A8A6A7;
+	color:#686667;
+	font-family:tahoma, verdana, arial, sans-serif;
+	font-size:11px;
+	font-weight: normal;		
+	
+}
+
+.inputerror
+{
+	width:200px;
+	height:18px;
+	border:1px solid;
+	border-color:#6f6e6e;
+	border-width:1px;
+	border-color:#A8A6A7;
+	color:#686667;
+	font-family:tahoma, verdana, arial, sans-serif;
+	font-size:11px;
+	font-weight: normal;
+	background-color:#F00;	
+}
+
+.errorMessage
+{
+	color:#D53A3E;
+	font-family:tahoma, verdana, arial, sans-serif;
+	font-size:13px;
+}
+
+#mensaje_error
+{
+	margin-top:16px;
+	margin-bottom:0px;
+	margin-left:40px;
+	padding-bottom:2px;
+	padding-top:2px;
+	padding-left:20px;
+	padding-right:50px;
+	text-align:justify;
+	border-style:solid;
+	border-top-width:1px;
+	border-top-color:#D53A3E;
+	border-right-width:2px;
+	border-right-color:#D53A3E;
+	border-bottom-width:2px;
+	border-bottom-color:#D53A3E;
+	border-left-width:1px;
+	border-left-color:#D53A3E;
+	width:600px;
+}
+
+#mensaje_error ul
+{
+	padding-top:0px;
+	margin-top:2px;
+	padding-bottom:0px;
+	padding-right:20px;
+	margin-bottom:0px;
+	margin-left:8px;
+	margin-right:10px;
+	color:#D53A3E;
+	font-family:tahoma, verdana, arial, sans-serif;
+	font-size:13px;
+	font-weight:normal;
+	list-style-image:url(../imagenes/importante.gif);
+}
+
+#mensaje_error label
+{
+	color:#D53A3E;
+	font-family:tahoma, verdana, arial, sans-serif;
+	font-size:12px;
+	font-weight:bold;
+}
+
+#mensaje_informacion
+{
+	margin-top:16px;
+	margin-bottom:0px;
+	margin-left:40px;
+	padding-bottom:2px;
+	padding-top:2px;
+	padding-left:20px;
+	padding-right:50px;
+	text-align:justify;
+	border-style:solid;
+	border-top-width:1px;
+	border-top-color:#686667;
+	border-right-width:2px;
+	border-right-color:#686667;
+	border-bottom-width:2px;
+	border-bottom-color:#686667;
+	border-left-width:1px;
+	border-left-color:#686667;
+	width:600px;
+}
+
+#mensaje_informacion ul
+{
+	padding-left:20px;
+	color:#686667;
+	font-family:tahoma, verdana, arial, sans-serif;
+	font-size:13px;
+	font-weight:bold;
+	border-style:none;
+	list-style-image:url(../imagenes/informacion.gif);
+}
