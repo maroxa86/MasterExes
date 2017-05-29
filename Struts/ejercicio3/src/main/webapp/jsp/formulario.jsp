@@ -16,6 +16,11 @@
 		      <s:actionmessage/>
 		   </div>
 		</s:if>
+		<s:if test="hasActionErrors()">
+		   <div class="errors">
+		      <s:actionerror/>
+		   </div>
+		</s:if>
 		<s:form id="usuario" action="resultadoAction" method="post">
 			<s:property value="%{getText('usuario.usuario')}"/>: <s:property value="usuario.usuario"/><br/>
 			<s:textfield name="usuario.nombre" id="usuario.nombre" label="%{getText('usuario.nombre')}" />

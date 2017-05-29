@@ -3,6 +3,7 @@ package ejercicio3.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 
 import ejercicio3.beans.Usuario;
 
@@ -39,6 +40,12 @@ public class UsuarioDAOImpl extends GenericDAOImpl implements UsuarioDAO {
 					user = new Usuario();
 					user.setUsuario(resultado.getString("usuario"));
 					user.setPassword(resultado.getString("password"));
+					user.setNombre(resultado.getString("nombre"));
+					user.setApellidos(resultado.getString("apellidos"));
+					user.setFechaNacimiento(resultado.getDate("fecha_nacimiento"));
+					user.setSueldo(resultado.getInt("sueldo"));
+					user.setNumHijos(resultado.getInt("num_hijos"));
+					user.setTelefono(resultado.getInt("telefono"));
 				}
 			}
 		} catch (Exception e) {
@@ -84,7 +91,9 @@ public class UsuarioDAOImpl extends GenericDAOImpl implements UsuarioDAO {
 			consulta.setString(1, usuario.getNombre());
 			consulta.setString(2, usuario.getApellidos());
 			consulta.setInt(3, usuario.getTelefono());
-			consulta.setString(4, usuario.getFechaNacimiento().toString());
+			SimpleDateFormat sdf = new SimpleDateFormat("DD/MM/YYYY");
+			String fechaFormat = sdf.format(usuario.getFechaNacimiento());
+			consulta.setString(4, fechaFormat);
 			consulta.setInt(5, usuario.getSueldo());
 			consulta.setInt(6, usuario.getNumHijos());
 			consulta.setString(7, usuario.getUsuario());

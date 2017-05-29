@@ -5,9 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<style type="text/css">@import url("css/estilos.css")</style>
 <title>ejercicio 3</title>
 </head>
 <body>
+	<s:if test="hasActionMessages()">
+	   <div class="welcome">
+	      <s:actionmessage/>
+	   </div>
+	</s:if>
 	<s:property value="%{getText('usuario.usuario')}"/>: <s:property value="usuario.usuario"/><br/>
 	<s:property value="%{getText('usuario.nombre')}"/>: <s:property value="usuario.nombre"/><br/>
 	<s:property value="%{getText('usuario.apellidos')}"/>: <s:property value="usuario.apellidos"/><br/>

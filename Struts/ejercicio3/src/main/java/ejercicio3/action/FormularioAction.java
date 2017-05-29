@@ -6,6 +6,8 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import ejercicio3.beans.Usuario;
+import ejercicio3.dao.UsuarioDAO;
+import ejercicio3.dao.UsuarioDAOImpl;
 
 @SuppressWarnings("serial")
 public class FormularioAction extends ActionSupport {
@@ -22,6 +24,16 @@ public class FormularioAction extends ActionSupport {
 		Map<String,Object> session = ActionContext.getContext().getSession();
 		Usuario usuarioAntiguo = (Usuario) session.get("usuario");
 		updateFieldUsuario(usuarioAntiguo);
+		UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
+		try {
+			usuarioDAO.saveUsuario(usuario);
+			session.put("usuario", usuario);
+		} catch (Exception e) {
+			addActionError("Error al guardar la informacion del usuario");
+			e.printStackTrace();
+			return INPUT;
+		}
+		addActionMessage("Información del usuario guardada correctamente");
 		return SUCCESS;
 	}
 
