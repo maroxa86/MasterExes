@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputScript library="js" name="hola.js"/>
+        <h:outputStylesheet library="css" name="default.css"/>
+    </h:head>
+    <h:body>
+        <h:panelGrid columns="3">
+            <h:form>
+                <h:messages style="color:red; margin: 8px;"/>
+                <br/>
+                <h:outputLabel value="#{i18n.nombre}" for="nombre"/>
+                <h:inputText value="#{ejercicio1.nombre}" id="nombre"/>
+                <h:message for="nombre" style="color: red;"/>
+                <h:button value="#{i18n.boton}"/>
+                <br/>
+                <h:commandLink action="cargar"/>
+                <br/>
+                <h:dataTable>
+                    <h:column>#{i18n.columna1}</h:column><h:column>#{i18n.columna2}</h:column>
+                    <h:graphicImage value = "http://www.tutorialspoint.com/images/jsf-mini-logo.png"/>
+                </h:dataTable>
+                <br/>
+                <h:panelGroup>
+                    <h:inputFile id="file" value="prueba.file"/>
+                    <h:commandButton value="#{i18n.commandButton}" action="prueba.upload" onclick="hola()"/>
+                </h:panelGroup>
+                <br/>
+                <h:inputHidden value="#{i18n.oculto}"/>
+                <br/>
+                <h:inputSecret />
+                <br/>
+                <h:inputTextarea cols="10" rows="10"/>
+                <br/>
+                <h:link value="pag1" outcome="pagina1"/>
+                <br/>
+                <h:outputFormat value="param0: {0}">
+                    <f:param value="#{i18n.parametro}"/>
+                </h:outputFormat>
+                <br/>
+                <h:outputLink>#{i18n.link}</h:outputLink>
+                <br/>
+                <h:outputText value="#{i18n.nombre}"/>
+                <h:outputLabel value="#{i18n.booleano}" for="booleano"/>
+                <h:selectBooleanCheckbox id="booleano"/>
+                <br/>
+                <h:selectManyCheckbox value="#{prueba.numeroFavorito}">
+                    <f:selectItem itemValue="1" itemLabel="#{i18n.primero}" />
+                    <f:selectItem itemValue="2" itemLabel="#{i18n.segundo}" />
+                    <f:selectItem itemValue="3" itemLabel="#{i18n.tercero}" />
+                </h:selectManyCheckbox>
+                <br/>
+                <h:selectManyListbox value="#{prueba.comidaFavorita}">
+                    <f:selectItem itemValue="#{i18n.patatas}" itemLabel="#{i18n.patatas}" />
+                    <f:selectItem itemValue="#{i18n.sopa}" itemLabel="#{i18n.sopa}" />
+                    <f:selectItem itemValue="#{i18n.arroz}" itemLabel="#{i18n.arroz}" />
+                </h:selectManyListbox>
+                <br/>
+                <h:selectManyMenu value="#{prueba.colores}">
+                    <f:selectItem itemValue="#{i18n.amarillo}" itemLabel="#{i18n.amarillo}" />
+                    <f:selectItem itemValue="#{i18n.rojo}" itemLabel="#{i18n.rojo}" />
+                    <f:selectItem itemValue="#{i18n.azul}" itemLabel="#{i18n.azul}" />
+                </h:selectManyMenu>
+                <br/>
+                <h:selectOneListbox value="#{prueba.anyo}">
+                    <f:selectItem itemValue="2000" itemLabel="2000" />
+                    <f:selectItem itemValue="2010" itemLabel="2010" />
+                    <f:selectItem itemValue="2020" itemLabel="2020" />
+                </h:selectOneListbox>
+                <br/>
+                <h:selectOneMenu value="#{prueba.cafe}">
+                    <f:selectItem itemValue="#{i18n.conLeche}" itemLabel="#{i18n.conLeche}" />
+                    <f:selectItem itemValue="#{i18n.solo}" itemLabel="#{i18n.solo}" />
+                    <f:selectItem itemValue="#{i18n.cortado}" itemLabel="#{i18n.cortado}" />
+                </h:selectOneMenu>
+                <br/>
+                <br/>
+                <h:selectOneRadio value="#{prueba.color}">
+                    <f:selectItem itemValue="#{i18n.amarillo}" itemLabel="#{i18n.amarillo}" />
+                    <f:selectItem itemValue="#{i18n.rojo}" itemLabel="#{i18n.rojo}" />
+                    <f:selectItem itemValue="#{i18n.azul}" itemLabel="#{i18n.azul}" />
+                </h:selectOneRadio>
+                <br/>
+            </h:form>
+        </h:panelGrid>
+    </h:body>
+</html>
+
