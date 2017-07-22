@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+                $(document).ready(function(){
+                    $('#enviar').click(function(){
+                        var nombre = $("#nombre").val();
+                        var apellidos = $("#apellidos").val();
+                        var edad = $("#edad").val();
+                        var usuario = $("#usuario").val();
+                        $.ajax({
+                            type:'POST',
+                            data: {nombre: nombre,
+                                   apellidos: apellidos,
+                                   edad: edad,
+                                   usuario: usuario},
+                            url:'Formulario',
+                            success: function(result){
+                                $('#result').html(result);
+                            }
+                        });
+                    });
+                    return true;
+                });
+        </script>
+    </head>
+    <body>
+        <form id="formulario" method="post" action="#" onsubmit="return false">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre">
+            <br/>
+            <label for="apellidos">Apellidos</label>
+            <input type="text" id="apellidos" name="apellidos">
+            <br/>
+            <label for="edad">Edad</label>
+            <input type="text" id="edad" name="edad">
+            <br/>
+            <label for="usuario">Usuario</label>
+            <input type="text" id="usuario" name="usuario">
+            <br/>
+            <input type="submit" id="enviar" value="enviar">
+        </form>
+        <p id="result"></p>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Ejercicio1</title>
+        <script src="prototype.js" type="text/javascript"> </script>
+        <script type="text/javascript">
+            function obtenerProvincia(){
+                var objson={method:"GET", 
+                            onComplete:function(objeto){
+                                $("provincia").update(objeto.responseText);
+                                $("provincia").innerHTML;
+                            }
+                    };
+                var listaPersonas=$("persona");
+                var persona = listaPersonas.options[listaPersonas.selectedIndex].value;
+                var url = "Provincia?persona="+persona;
+                new Ajax.Request(url, objson);
+            }
+        </script>
+    </head>
+    <body>
+        <select id="persona" onchange="obtenerProvincia()" style="display: inline-block">
+            <option value="0">Escoge una opcion</option>
+            <option value="1">Juan</option>
+            <option value="2">Oscar</option>
+            <option value="3">Mercedes</option>
+            <option value="4">Angeles</option>
+        </select>
+        <div id="provincia" style="display: inline-block">
+        </div>  
+    </body>
+</html>
