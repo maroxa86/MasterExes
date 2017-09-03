@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Facelet Title</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:menubar>
+			<p:menuitem value="Perfil" action="#{login.perfil}" />
+			<p:menuitem value="Inventario" action="#{almacen.getInventarioProductos}" />
+			<p:menuitem value="Añadir producto" action="#{almacen.newProducto}" />
+			<p:menuitem value="Logout" action="#{login.logout}" />
+		</p:menubar>
+
+		<h:outputLabel value="Nombre" />
+		<h:inputText id="nombre" name="nombre" value="#{almacen.infoProducto.nombre}"/>
+		<h:outputLabel value="Precio" />
+		<h:inputText id="precio" name="precio" value="#{almacen.infoProducto.precio}"/>
+		<h:outputLabel value="Stock" />
+		<h:inputText id="stock" name="stock" value="#{almacen.infoProducto.stock}"/>
+		<h:commandButton actionListener="#{almacen.guardarProducto}" action="#{almacen.getInventarioProductos}" value="Guardar" />
+	</h:form>
+</h:body>
+</html>
