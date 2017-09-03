@@ -21,11 +21,7 @@ import javax.servlet.http.HttpSession;
 
 import xavier.roig.service.LoginService;
 
-/**
- *
- * @author Xavi
- */
-@WebFilter(filterName = "SessionFilter", urlPatterns = {"/*"})
+@WebFilter(filterName = "SessionFilter", urlPatterns = {"*.xhtml"})
 public class SessionFilter implements Filter{
 
     @ManagedProperty("#{loginService}")
