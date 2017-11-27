@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Context path="/almacen" docBase="almacen" reloadable="true"
-	crossContext="true">
-	<Resource name ="jdbc/almacen " auth="Container"
-		type="javax.sql.DataSource" maxActive="100" maxIdle="30" maxWait="10000"
-		username="almacen" password="almacen" driverClassName="oracle.jdbc.driver.OracleDriver"
-		url="jdbc:oracle:thin:@localhost:1521:XE" />
-</Context>
