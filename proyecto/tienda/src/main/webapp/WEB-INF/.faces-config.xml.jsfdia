@@ -65,7 +65,7 @@
  <PROCESS-ITEM NAME="rules:#comercial.xhtml" PATH="/comercial.xhtml"
   SHAPE="272,209,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#admin.xhtml" PATH="/admin.xhtml"
-  SHAPE="272,33,0,0" model-entity="JSFProcessGroup">
+  SHAPE="272,32,50,57" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#admin.xhtml:0" NAME="item"
    PATH="/admin.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
@@ -78,7 +78,20 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#inventarioAlmacenAdmin.xhtml"
-  PATH="/inventarioAlmacenAdmin.xhtml" SHAPE="528,17,0,0" model-entity="JSFProcessGroup"/>
+  PATH="/inventarioAlmacenAdmin.xhtml" SHAPE="864,24,50,25" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#crearUsuario.xhtml"
-  PATH="/crearUsuario.xhtml" SHAPE="528,193,0,0" model-entity="JSFProcessGroup"/>
+  PATH="/crearUsuario.xhtml" SHAPE="584,48,50,73" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#crearUsuario.xhtml:0" NAME="item"
+   PATH="/crearUsuario.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="inventarioAdmin::#inventarioAlmacenAdmin.xhtml" NAME="output"
+    PATH="/inventarioAlmacenAdmin.xhtml"
+    TARGET="rules:#inventarioAlmacenAdmin.xhtml" TITLE="inventarioAdmin" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="perfil::#admin.xhtml" NAME="output1"
+    PATH="/admin.xhtml" TARGET="rules:#admin.xhtml" TITLE="perfil" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="crearUsuario::#crearUsuario.xhtml"
+    NAME="output2" PATH="/crearUsuario.xhtml"
+    TARGET="rules:#crearUsuario.xhtml" TITLE="crearUsuario" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>

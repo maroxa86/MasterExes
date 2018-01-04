@@ -8,10 +8,13 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,38 +30,41 @@ import javax.validation.constraints.Size;
 public class Trabajador implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@Basic(optional = false)
 	@NotNull
 	@Column(name = "ID")
-	
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRABAJADOR_SEQ")
+    @SequenceGenerator(sequenceName = "TRABAJADOR_SEQ", allocationSize = 1, name = "TRABAJADOR_SEQ")
 	private Integer id;
+	
 	@Basic(optional = false)
 	@NotNull
 	@Size(min = 1, max = 50)
 	@Column(name = "NOMBRE")
-	
 	private String nombre;
+	
 	@Basic(optional = false)
 	@NotNull
 	@Size(min = 1, max = 100)
 	@Column(name = "APELLIDO1")
-	
 	private String apellido1;
+	
 	@Basic(optional = false)
 	@NotNull
 	@Size(min = 1, max = 100)
 	@Column(name = "APELLIDO2")
-	
 	private String apellido2;
+	
 	@Column(name = "FECHA_NACIMIENTO")
 	@Temporal(TemporalType.TIMESTAMP)
-	
 	private Date fechaNacimiento;
+	
 	@Column(name = "FECHA_INCORPORACION")
 	@Temporal(TemporalType.TIMESTAMP)
-	
 	private Date fechaIncorporacion;
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "trabajador")
 	private List<Venta> ventaList;
 	

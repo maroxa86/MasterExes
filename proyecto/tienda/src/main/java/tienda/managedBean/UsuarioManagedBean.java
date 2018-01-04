@@ -1,17 +1,23 @@
 package tienda.managedBean;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.faces.event.ActionEvent;
+import javax.faces.model.SelectItem;
 
 import tienda.dominios.TipoTrabajador;
+import tienda.dominios.Trabajador;
+import tienda.dominios.Usuario;
 import tienda.service.TipoTrabajadorService;
+import tienda.service.UsuarioService;
 
 @ManagedBean(name = "usuario")
-@RequestScoped
+@SessionScoped
 public class UsuarioManagedBean {
 
 	private String user;
@@ -19,16 +25,14 @@ public class UsuarioManagedBean {
 	private String nombre;
 	private String apellido1;
 	private String apellido2;
-	private List<TipoTrabajador> tipoTrabajadorList;
-	private TipoTrabajador tipoTrabajador;
+	private List<SelectItem> tipoTrabajadorSelectItem;
+	private Integer tipoTrabajadorId;
 	
 	@ManagedProperty("#{tipoTrabajadorService}")
 	private TipoTrabajadorService tipoTrabajadorService;
 	
-	@PostConstruct
-	public void init() {
-		tipoTrabajadorList = tipoTrabajadorService.getListadoTipoTrabajador();
-	}
+	@ManagedProperty("#{usuarioService}")
+	private UsuarioService usuarioService;
 	
 	public String getUser() {
 		return user;
@@ -61,12 +65,17 @@ public class UsuarioManagedBean {
 		this.apellido2 = apellido2;
 	}
 
-	public List<TipoTrabajador> getTipoTrabajadorList() {
-		return tipoTrabajadorList;
+	public List<SelectItem> getTipoTrabajadorSelectItem() {
+		List<TipoTrabajador> tipoTrabajadorList = tipoTrabajadorService.getListadoTipoTrabajador();
+		tipoTrabajadorSelectItem = new ArrayList<>();
+        for (TipoTrabajador tipoTrabajadorInfo : tipoTrabajadorList) {
+        	tipoTrabajadorSelectItem.add(new SelectItem(tipoTrabajadorInfo.getId(), tipoTrabajadorInfo.getNombre()));
+        }
+		return tipoTrabajadorSelectItem;
 	}
 
-	public void setTipoTrabajadorList(List<TipoTrabajador> tipoTrabajadorList) {
-		this.tipoTrabajadorList = tipoTrabajadorList;
+	public void setTipoTrabajadorSelectItem(List<SelectItem> tipoTrabajadorSelectItem) {
+		this.tipoTrabajadorSelectItem = tipoTrabajadorSelectItem;
 	}
 
 	public TipoTrabajadorService getTipoTrabajadorService() {
@@ -77,13 +86,49 @@ public class UsuarioManagedBean {
 		this.tipoTrabajadorService = tipoTrabajadorService;
 	}
 
-	public TipoTrabajador getTipoTrabajador() {
-		return tipoTrabajador;
+	public Integer getTipoTrabajadorId() {
+		return tipoTrabajadorId;
 	}
 
-	public void setTipoTrabajador(TipoTrabajador tipoTrabajador) {
-		this.tipoTrabajador = tipoTrabajador;
+	public void setTipoTrabajadorId(Integer tipoTrabajadorId) {
+		this.tipoTrabajadorId = tipoTrabajadorId;
 	}
 	
+	public UsuarioService getUsuarioService() {
+		return usuarioService;
+	}
+
+	public void setUsuarioService(UsuarioService usuarioService) {
+		this.usuarioService = usuarioService;
+	}
+
+	public String crearUsuario(){
+		user = "";
+		pwd = "";
+		nombre = "";
+		apellido1 = "";
+		apellido2 = "";
+		tipoTrabajadorSelectItem = null;
+		tipoTrabajadorId = null;
+		return "crearUsuario";
+	}
+	
+	public void newUsuario(ActionEvent e){
+		Trabajador trabajador = new Trabajador();
+		trabajador.setNombre(nombre);
+		trabajador.setApellido1(apellido1);
+		trabajador.setApellido2(apellido2);
+		trabajador.setFechaIncorporacion(new Date());
+		trabajador.setTipoTrabajador(new TipoTrabajador(tipoTrabajadorId));
+		
+		Usuario usuario = new Usuario();
+		usuario.setUsuario(user);
+		usuario.setClave(pwd);
+		usuario.setIdTrabajador(trabajador);
+		usuario.setActivo((short)1);
+		
+		usuarioService.newUsuario(usuario);
+		
+	}
 	
 }

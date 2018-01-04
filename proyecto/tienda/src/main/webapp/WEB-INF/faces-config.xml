@@ -29,6 +29,21 @@
 		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>
+		<from-view-id>/crearUsuario.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>inventarioAdmin</from-outcome>
+			<to-view-id>/inventarioAlmacenAdmin.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>perfil</from-outcome>
+			<to-view-id>/admin.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>crearUsuario</from-outcome>
+			<to-view-id>/crearUsuario.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
 		<from-view-id>/mozoAlmacen.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>perfil</from-outcome>

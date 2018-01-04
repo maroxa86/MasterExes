@@ -1,31 +1,37 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-	<head>
-		<title>Insert title here</title>
-	</head>
-	<body>
-		<h:form>
-			<p:menubar>
-				<p:menuitem value="Perfil" action="#{login.perfil}" />
-				<p:menuitem value="Inventario" action="#{almacen.getInventarioProductos}" />
-				<p:menuitem value="Logout" action="#{login.logout}" />
-			</p:menubar>
-			<h:outputLabel value="Usuario" /><h:inputFile value="#{usuario.user}" id="usuario" name="usuario"/><br/>
-			<h:outputLabel value="Contraseña" /><h:inputSecret value="#{usuario.pwd}" id="pwd" name="pwd"/><br/>
-			<h:outputLabel value="Nombre: "/><h:inputText value="#{usuario.nombre}" id="nombre" name="nombre"/>
-	       	<h:outputLabel value="Primer Apellido: "/><h:inputText value="#{usuario.apellido1}" id="apellido1" name="apellido1"/><br/>
-	       	<h:outputLabel value="Segundo Apellido: "/><h:inputText value="#{usuario.apellido2}" id="apellido2" name="apellido2"/><br/>
-	       	<h:outputLabel value="Tipo Trabajador: "/><p:selectOneMenu id="tipoTrabajadorSelect" value="#{usuario.tipoTrabajador}" var="tt">
-	       												<f:selectItems value="#{usuario.tipoTrabajadorList}" var="tipoTra" 
-	       													itemLabel="#{tipoTra.nombre}" itemValue="#{tipoTra}"/>
-	       												</p:selectOneMenu><br/> 
-	       										
-		</h:form>
-	</body>
+<h:head>
+	<title>Insert title here</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:menubar>
+			<p:menuitem value="Perfil" action="#{login.perfil}" />
+			<p:menuitem value="Inventario" action="#{almacen.getInventarioProductosAdmin}" />
+			<p:menuitem value="Logout" action="#{login.logout}" />
+		</p:menubar>
+		
+		<h:outputLabel value="Usuario" /><h:inputText value="#{usuario.user}" id="usuario" name="usuario"/><br/>
+		<h:outputLabel value="Contraseña" /><h:inputSecret value="#{usuario.pwd}" id="pwd" name="pwd"/><br/>
+		<h:outputLabel value="Nombre: "/><h:inputText value="#{usuario.nombre}" id="nombre" name="nombre"/>
+       	<h:outputLabel value="Primer Apellido: "/><h:inputText value="#{usuario.apellido1}" id="apellido1" name="apellido1"/><br/>
+       	<h:outputLabel value="Segundo Apellido: "/><h:inputText value="#{usuario.apellido2}" id="apellido2" name="apellido2"/><br/>
+       	<h:outputLabel value="Tipo Trabajador: "/>
+       	
+       	<p:selectOneMenu value="#{usuario.tipoTrabajadorId}">
+       		<f:selectItem itemLabel="- Seleccione -" itemValue=""/>
+       		<f:selectItems value="#{usuario.tipoTrabajadorSelectItem}"/>
+       	</p:selectOneMenu>
+       
+		<br/>
+		
+		<h:commandButton actionListener="#{usuario.newUsuario}" action="#{usuario.crearUsuario}" value="Dar de Alta" />								
+	</h:form>
+</h:body>
 </html>
