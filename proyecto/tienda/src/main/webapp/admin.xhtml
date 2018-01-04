@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Facelet Title</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p>Welcome #{login.user} Admin</p>
+        <p:menubar>
+        	<p:menuitem value="Perfil" action="#{login.perfil}"/>
+            <p:menuitem value="Inventario Almacen" action="#{almacen.getInventarioProductosAdmin}" />
+           	<p:menuitem value="Crear Usuario" action="#{almacen.crearUsuario}" />
+            <p:menuitem value="Logout" action="#{login.logout}"/>
+        </p:menubar>
+        <h:outputLabel value="Nombre: "/><h:outputLabel value="#{login.datosTrabajador.nombre}"/><br/>
+       	<h:outputLabel value="Primer Apellido: "/><h:outputLabel value="#{login.datosTrabajador.apellido1}"/><br/>
+       	<h:outputLabel value="Segundo Apellido: "/><h:outputLabel value="#{login.datosTrabajador.apellido2}"/><br/>
+       	<h:outputLabel value="Fecha Naciemiento: "/><h:outputLabel value="#{login.datosTrabajador.fechaNacimiento}"/><br/>
+       	<h:outputLabel value="Fecha Incorporacion: "/><h:outputLabel value="#{login.datosTrabajador.fechaIncorporacion}"/><br/>
+       	<h:outputLabel value="Tipo Trabajador: "/><h:outputLabel value="#{login.datosTrabajador.tipoTrabajador.nombre}"/><br/>
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:p="http://primefaces.org/ui" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../templates/mozoTemplate.xhtml">
+
+    <ui:define name="content">
+        <h:outputLabel value="Nombre: "/><h:outputLabel value="#{login.datosTrabajador.nombre}"/><br/>
+        <h:outputLabel value="Primer Apellido: "/><h:outputLabel value="#{login.datosTrabajador.apellido1}"/><br/>
+        <h:outputLabel value="Segundo Apellido: "/><h:outputLabel value="#{login.datosTrabajador.apellido2}"/><br/>
+        <h:outputLabel value="Fecha Naciemiento: "/><h:outputLabel value="#{login.datosTrabajador.fechaNacimiento}"/><br/>
+        <h:outputLabel value="Fecha Incorporacion: "/><h:outputLabel value="#{login.datosTrabajador.fechaIncorporacion}"/><br/>
+        <h:outputLabel value="Tipo Trabajador: "/><h:outputLabel value="#{login.datosTrabajador.tipoTrabajador.nombre}"/><br/>
+    </ui:define>
+ 
+</ui:composition>
