@@ -2,12 +2,18 @@ package tienda.dominios;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -21,23 +27,39 @@ import javax.validation.constraints.Size;
 public class Cliente implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CLIENTE_SEQ")
+    @SequenceGenerator(sequenceName = "CLIENTE_SEQ", allocationSize = 1, name = "CLIENTE_SEQ")
     private Integer id;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 200)
     @Column(name = "NOMBRE")
     private String nombre;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 9)
     @Column(name = "CIF")
     private String cif;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
-    private List<Representante> representanteList;
+    
+    @JoinColumn(name = "ID_TRABAJADOR", referencedColumnName = "ID")
+    @ManyToOne(optional = false)
+    private Trabajador trabajador;
+    
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 9)
+    @Column(name = "COMISION")
+    private Double comision;
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Venta> listadoVentas;
 
     public Cliente() {
     }
@@ -46,13 +68,21 @@ public class Cliente implements Serializable {
         this.id = id;
     }
 
-    public Cliente(Integer id, String nombre, String cif) {
+    public Cliente(Integer id, String nombre, String cif, Double comision) {
         this.id = id;
         this.nombre = nombre;
         this.cif = cif;
+        this.comision = comision;
     }
 
-    public Integer getId() {
+    public Cliente(String nombre, String cif, Double comision, Trabajador trabajador) {
+		this.nombre = nombre;
+		this.cif = cif;
+		this.comision = comision;
+		this.trabajador = trabajador;
+	}
+
+	public Integer getId() {
         return id;
     }
 
@@ -76,15 +106,31 @@ public class Cliente implements Serializable {
         this.cif = cif;
     }
 
-    public List<Representante> getRepresentanteList() {
-        return representanteList;
-    }
+    public Double getComision() {
+		return comision;
+	}
 
-    public void setRepresentanteList(List<Representante> representanteList) {
-        this.representanteList = representanteList;
-    }
+	public void setComision(Double comision) {
+		this.comision = comision;
+	}
 
-    @Override
+	public Trabajador getTrabajador() {
+		return trabajador;
+	}
+
+	public void setTrabajador(Trabajador trabajador) {
+		this.trabajador = trabajador;
+	}
+
+	public List<Venta> getListadoVentas() {
+		return listadoVentas;
+	}
+
+	public void setListadoVentas(List<Venta> listadoVentas) {
+		this.listadoVentas = listadoVentas;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);

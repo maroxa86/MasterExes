@@ -25,6 +25,7 @@ import javax.validation.constraints.Size;
 public class Producto implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @Basic(optional = false)
     @NotNull
@@ -32,20 +33,23 @@ public class Producto implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUCTO_SEQ")
     @SequenceGenerator(sequenceName = "PRODUCTO_SEQ", allocationSize = 1, name = "PRODUCTO_SEQ")
     private Integer id;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 200)
     @Column(name = "NOMBRE")
     private String nombre;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "PRECIO")
     private BigDecimal precio;
+    
     @Column(name = "STOCK")
     private Integer stock;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
-    private List<Venta> ventaList;
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Venta> listadoVentas;
 
     public Producto() {
     }
@@ -93,15 +97,15 @@ public class Producto implements Serializable {
         this.stock = stock;
     }
 
-    public List<Venta> getVentaList() {
-        return ventaList;
-    }
+    public List<Venta> getListadoVentas() {
+		return listadoVentas;
+	}
 
-    public void setVentaList(List<Venta> ventaList) {
-        this.ventaList = ventaList;
-    }
+	public void setListadoVentas(List<Venta> listadoVentas) {
+		this.listadoVentas = listadoVentas;
+	}
 
-    @Override
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
@@ -110,7 +114,6 @@ public class Producto implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Producto)) {
             return false;
         }

@@ -109,9 +109,4 @@ public class AlmacenManagedBean {
 	public void setInfoProducto(Producto infoProducto) {
 		this.infoProducto = infoProducto;
 	}
-	
-	public void newUsuario(){
-		System.out.println("HOLA ALMACEN");
-	}
-
 }

@@ -17,6 +17,7 @@
 			<to-view-id>/mozoAlmacen.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
 		<from-view-id>/admin.xhtml</from-view-id>
 		<navigation-case>
@@ -28,6 +29,7 @@
 			<to-view-id>/crearUsuario.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
 		<from-view-id>/crearUsuario.xhtml</from-view-id>
 		<navigation-case>
@@ -43,6 +45,7 @@
 			<to-view-id>/crearUsuario.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
 		<from-view-id>/mozoAlmacen.xhtml</from-view-id>
 		<navigation-case>
@@ -54,6 +57,7 @@
 			<to-view-id>/inventarioAlmacen.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
 		<from-view-id>/inventarioAlmacen.xhtml</from-view-id>
 		<navigation-case>
@@ -73,6 +77,7 @@
 			<to-view-id>/editProducto.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
 		<from-view-id>/newProducto.xhtml</from-view-id>
 		<navigation-case>
@@ -87,7 +92,41 @@
 			<to-view-id>/inventarioAlmacen.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/comercial.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>clientes</from-outcome>
+			<to-view-id>/clientes.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/clientes.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>newCliente</from-outcome>
+			<to-view-id>/newCliente.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>perfil</from-outcome>
+			<to-view-id>/comercial.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/newCliente.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>clientes</from-outcome>
+			<to-view-id>/clientes.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>perfil</from-outcome>
+			<to-view-id>/comercial.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
 	<application>
 		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
 	</application>
+	
 </faces-config>

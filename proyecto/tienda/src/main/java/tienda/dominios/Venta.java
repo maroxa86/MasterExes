@@ -2,12 +2,11 @@ package tienda.dominios;
 
 import java.io.Serializable;
 import java.util.Date;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,21 +25,17 @@ public class Venta implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@EmbeddedId
 	protected VentaPK ventaPK;
+	
 	@Basic(optional = false)
 	@NotNull
 	@Column(name = "CANTIDAD")
 	private int cantidad;
+	
 	@Basic(optional = false)
 	@NotNull
 	@Column(name = "FECHA_VENTA")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaVenta;
-	@JoinColumn(name = "ID_PRODUCTO", referencedColumnName = "ID", insertable = false, updatable = false)
-	@ManyToOne(optional = false)
-	private Producto producto;
-	@JoinColumn(name = "ID_TRABAJADOR", referencedColumnName = "ID", insertable = false, updatable = false)
-	@ManyToOne(optional = false)
-	private Trabajador trabajador;
 
 	public Venta() {
 	}
@@ -55,8 +50,8 @@ public class Venta implements Serializable {
 		this.fechaVenta = fechaVenta;
 	}
 
-	public Venta(int idTrabajador, int idProducto) {
-		this.ventaPK = new VentaPK(idTrabajador, idProducto);
+	public Venta(Cliente cliente, Producto producto) {
+		this.ventaPK = new VentaPK(cliente, producto);
 	}
 
 	public VentaPK getVentaPK() {
@@ -81,22 +76,6 @@ public class Venta implements Serializable {
 
 	public void setFechaVenta(Date fechaVenta) {
 		this.fechaVenta = fechaVenta;
-	}
-
-	public Producto getProducto() {
-		return producto;
-	}
-
-	public void setProducto(Producto producto) {
-		this.producto = producto;
-	}
-
-	public Trabajador getTrabajador() {
-		return trabajador;
-	}
-
-	public void setTrabajador(Trabajador trabajador) {
-		this.trabajador = trabajador;
 	}
 
 	@Override

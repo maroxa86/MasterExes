@@ -65,15 +65,12 @@ public class Trabajador implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaIncorporacion;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "trabajador")
-	private List<Venta> ventaList;
-	
 	@JoinColumn(name = "TIPO_TRABAJADOR", referencedColumnName = "ID")
 	@ManyToOne(optional = false)
 	private TipoTrabajador tipoTrabajador;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "trabajador")
-	private List<Representante> representanteList;
+	private List<Cliente> clientesList;
 	
 	@OneToMany(mappedBy = "idTrabajador")
 	private List<Usuario> usuarioList;
@@ -139,29 +136,13 @@ public class Trabajador implements Serializable {
 	public void setFechaIncorporacion(Date fechaIncorporacion) {
 		this.fechaIncorporacion = fechaIncorporacion;
 	}
-
-	public List<Venta> getVentaList() {
-		return ventaList;
-	}
-
-	public void setVentaList(List<Venta> ventaList) {
-		this.ventaList = ventaList;
-	}
-
+	
 	public TipoTrabajador getTipoTrabajador() {
 		return tipoTrabajador;
 	}
 
 	public void setTipoTrabajador(TipoTrabajador tipoTrabajador) {
 		this.tipoTrabajador = tipoTrabajador;
-	}
-
-	public List<Representante> getRepresentanteList() {
-		return representanteList;
-	}
-
-	public void setRepresentanteList(List<Representante> representanteList) {
-		this.representanteList = representanteList;
 	}
 
 	public List<Usuario> getUsuarioList() {

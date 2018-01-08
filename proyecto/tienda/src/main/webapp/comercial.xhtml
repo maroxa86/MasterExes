@@ -2,14 +2,26 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Facelet Title</title>
 </h:head>
 <h:body>
 	<h:form>
 		<p>Welcome #{login.user} Comercial</p>
-		<h:commandLink action="#{login.logout}" value="Logout"></h:commandLink>
+		
+		<p:menubar>
+        	<p:menuitem value="Clientes" action="#{comercial.clientes}" />
+            <p:menuitem value="Logout" action="#{login.logout}" />
+        </p:menubar>
+        
+        <h:outputLabel value="Nombre: "/><h:outputLabel value="#{login.datosTrabajador.nombre}"/><br/>
+       	<h:outputLabel value="Primer Apellido: "/><h:outputLabel value="#{login.datosTrabajador.apellido1}"/><br/>
+       	<h:outputLabel value="Segundo Apellido: "/><h:outputLabel value="#{login.datosTrabajador.apellido2}"/><br/>
+       	<h:outputLabel value="Fecha Naciemiento: "/><h:outputLabel value="#{login.datosTrabajador.fechaNacimiento}"/><br/>
+       	<h:outputLabel value="Fecha Incorporacion: "/><h:outputLabel value="#{login.datosTrabajador.fechaIncorporacion}"/><br/>
+       	<h:outputLabel value="Tipo Trabajador: "/><h:outputLabel value="#{login.datosTrabajador.tipoTrabajador.nombre}"/><br/>
 	</h:form>
 </h:body>
 </html>

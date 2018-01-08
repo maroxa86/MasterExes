@@ -63,7 +63,14 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#comercial.xhtml" PATH="/comercial.xhtml"
-  SHAPE="272,209,0,0" model-entity="JSFProcessGroup"/>
+  SHAPE="272,209,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#comercial.xhtml:0" NAME="item"
+   PATH="/comercial.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="clientes::#clientes.xhtml" NAME="output"
+    PATH="/clientes.xhtml" TARGET="rules:#clientes.xhtml"
+    TITLE="clientes" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#admin.xhtml" PATH="/admin.xhtml"
   SHAPE="272,32,50,57" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#admin.xhtml:0" NAME="item"
@@ -92,6 +99,30 @@
    <PROCESS-ITEM-OUTPUT ID="crearUsuario::#crearUsuario.xhtml"
     NAME="output2" PATH="/crearUsuario.xhtml"
     TARGET="rules:#crearUsuario.xhtml" TITLE="crearUsuario" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#clientes.xhtml" PATH="/clientes.xhtml"
+  SHAPE="512,192,50,57" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#clientes.xhtml:0" NAME="item"
+   PATH="/clientes.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="newCliente::#newCliente.xhtml" NAME="output"
+    PATH="/newCliente.xhtml" TARGET="rules:#newCliente.xhtml"
+    TITLE="newCliente" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="perfil::#comercial.xhtml" NAME="output1"
+    PATH="/comercial.xhtml" TARGET="rules:#comercial.xhtml"
+    TITLE="perfil" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#newCliente.xhtml" PATH="/newCliente.xhtml"
+  SHAPE="776,216,50,25" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#newCliente.xhtml:0" NAME="item"
+   PATH="/newCliente.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="clientes::#clientes.xhtml" NAME="output"
+    PATH="/clientes.xhtml" TARGET="rules:#clientes.xhtml"
+    TITLE="clientes" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="perfil::#comercial.xhtml" NAME="output1"
+    PATH="/comercial.xhtml" TARGET="rules:#comercial.xhtml"
+    TITLE="perfil" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
 </PROCESS>

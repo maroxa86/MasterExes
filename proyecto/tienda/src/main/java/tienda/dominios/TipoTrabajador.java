@@ -21,16 +21,19 @@ import javax.validation.constraints.Size;
 public class TipoTrabajador implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "ID")
     private Integer id;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
     @Column(name = "NOMBRE")
     private String nombre;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoTrabajador")
     private List<Trabajador> trabajadorList;
 
