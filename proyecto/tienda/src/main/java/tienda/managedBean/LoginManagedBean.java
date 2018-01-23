@@ -18,6 +18,7 @@ public class LoginManagedBean {
 
 	@ManagedProperty("#{loginService}")
 	private LoginService loginService;
+	
 	private String user;
 	private String pwd;
 	private Trabajador datosTrabajador;

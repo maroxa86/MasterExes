@@ -15,7 +15,6 @@ import tienda.dao.GenericDAO;
 
 @Repository
 public abstract class AbstractGenericDAOImpl <T, E extends Serializable> implements GenericDAO<T, E>{
-
     private Class<T> claseDePersistencia;
 
     @PersistenceContext

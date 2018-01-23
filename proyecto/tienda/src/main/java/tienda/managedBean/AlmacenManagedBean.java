@@ -1,6 +1,5 @@
 package tienda.managedBean;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -56,7 +55,7 @@ public class AlmacenManagedBean {
 	public void addProducto() {
 		Producto producto = new Producto();
 		producto.setNombre(nombre);
-		producto.setPrecio(new BigDecimal(precio));
+		producto.setPrecio(new Double(precio));
 		producto.setStock(Integer.parseInt(stock));
 		productoBean.addProducto(producto);
 	}

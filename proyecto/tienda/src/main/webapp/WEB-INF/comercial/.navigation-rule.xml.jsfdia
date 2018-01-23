@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#comercial.xhtml" PATH="/comercial.xhtml"
+  SHAPE="32,32,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#comercial.xhtml:0" NAME="item"
+   PATH="/comercial.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="clientes::#clientes.xhtml" NAME="output"
+    PATH="/clientes.xhtml" TARGET="rules:#clientes.xhtml"
+    TITLE="clientes" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="crearPedido::#crearPedido.xhtml"
+    NAME="output1" PATH="/crearPedido.xhtml"
+    TARGET="rules:#crearPedido.xhtml" TITLE="crearPedido" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#clientes.xhtml" PATH="/clientes.xhtml"
+  SHAPE="480,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#clientes.xhtml:0" NAME="item"
+   PATH="/clientes.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="newCliente::#newCliente.xhtml" NAME="output"
+    PATH="/newCliente.xhtml" TARGET="rules:#newCliente.xhtml"
+    TITLE="newCliente" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="perfil::#comercial.xhtml" NAME="output1"
+    PATH="/comercial.xhtml" TARGET="rules:#comercial.xhtml"
+    TITLE="perfil" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#newCliente.xhtml" PATH="/newCliente.xhtml"
+  SHAPE="328,208,50,57" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#newCliente.xhtml:0" NAME="item"
+   PATH="/newCliente.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="perfil::#comercial.xhtml" NAME="output1"
+    PATH="/comercial.xhtml" TARGET="rules:#comercial.xhtml"
+    TITLE="perfil" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="clientes::#clientes.xhtml" NAME="output"
+    PATH="/clientes.xhtml"
+    SHAPE="377,256,472,256,472,88,474,88,474,24,479,24"
+    TARGET="rules:#clientes.xhtml" TITLE="clientes" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#crearPedido.xhtml" PATH="/crearPedido.xhtml"
+  SHAPE="136,264,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#crearPedido.xhtml:0" NAME="item"
+   PATH="/crearPedido.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="perfil::#comercial.xhtml" NAME="output"
+    PATH="/comercial.xhtml" TARGET="rules:#comercial.xhtml"
+    TITLE="perfil" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="clientes::#clientes.xhtml" NAME="output1"
+    PATH="/clientes.xhtml" TARGET="rules:#clientes.xhtml"
+    TITLE="clientes" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="listadoPedidos::#listadoPedidos.xhtml"
+    NAME="output2" PATH="/listadoPedidos.xhtml"
+    TARGET="rules:#listadoPedidos.xhtml" TITLE="listadoPedidos" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#listadoPedidos.xhtml"
+  PATH="/listadoPedidos.xhtml" SHAPE="304,321,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

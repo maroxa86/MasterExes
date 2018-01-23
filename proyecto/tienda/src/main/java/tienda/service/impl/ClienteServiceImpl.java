@@ -34,4 +34,9 @@ public class ClienteServiceImpl implements ClienteService {
 	public void addCliente(Cliente cliente) {
 		clienteDAO.insertar(cliente);
 	}
+
+	@Override
+	public Cliente getClienteById(Integer idCliente) {
+		return clienteDAO.buscarPorClave(idCliente);
+	}
 }

@@ -8,4 +8,5 @@ public interface ClienteService {
 
 	List<Cliente> getListadoClientes();
 	void addCliente(Cliente cliente);
+	Cliente getClienteById(Integer idCliente);
 }

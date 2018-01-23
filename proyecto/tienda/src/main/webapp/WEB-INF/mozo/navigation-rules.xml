@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+	<application />
+	
+	<navigation-rule>
+		<from-view-id>/mozoAlmacen.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>perfil</from-outcome>
+			<to-view-id>/mozoAlmacen.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>inventario</from-outcome>
+			<to-view-id>/inventarioAlmacen.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/inventarioAlmacen.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>perfil</from-outcome>
+			<to-view-id>/mozoAlmacen.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>inventario</from-outcome>
+			<to-view-id>/inventarioAlmacen.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>newProducto</from-outcome>
+			<to-view-id>/newProducto.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>editarProducto</from-outcome>
+			<to-view-id>/editProducto.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/newProducto.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>inventario</from-outcome>
+			<to-view-id>/inventarioAlmacen.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/editProducto.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>inventario</from-outcome>
+			<to-view-id>/inventarioAlmacen.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+</faces-config>

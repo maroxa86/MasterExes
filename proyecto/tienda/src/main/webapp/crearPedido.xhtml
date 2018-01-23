@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Facelet Title</title>
+</h:head>
+<h:body>
+	<h:form>		
+		<p:menubar>
+			<p:menuitem value="Perfil" action="#{login.perfil}" />
+        	<p:menuitem value="Clientes" action="#{comercial.clientes}" />
+            <p:menuitem value="Logout" action="#{login.logout}" />
+        </p:menubar>
+        
+        <p:outputLabel value="Seleccione un comercio" />
+        <p:selectOneMenu value="#{comercial.idCliente}" disabled="#{comercial.disabledClienteSelect}">
+        	<p:ajax listener="#{comercial.onChangeCliente}" update="productosArea"/>
+       		<f:selectItem itemLabel="- Seleccione -" itemValue="#{null}"/>
+       		<f:selectItems value="#{comercial.listadoClientesSelectItem}"/>
+       	</p:selectOneMenu>
+       	
+       	<p:panelGrid id="productosArea">
+       		<p:panel  rendered="#{comercial.renderProductoZone}" header="Detalle Factura">
+       	
+       			<p:outputLabel value="Producto"/>
+       			<p:selectOneMenu value="#{comercial.idProducto}">
+       				<f:selectItem itemLabel="- Seleccione -" itemValue="#{null}"/>
+       				<f:selectItems value="#{comercial.listadoProductosSelectItem}"/>
+       			</p:selectOneMenu>
+       			
+       			<p:outputLabel value="Cantidad" />
+       			<p:inputText value="#{comercial.cantidad}"/>
+       			
+       			<p:commandButton value="Añadir" actionListener="#{comercial.agregar()}" update="detalle"/>
+       			
+       			<p:dataTable id="detalle" value="#{comercial.listaDetalle}" var="det">
+       				<p:column headerText="Producto">
+       					<h:outputText value="#{det.producto.nombre}" />
+       					
+       				</p:column>
+       				<p:column headerText="Cantidad">
+       					<h:outputText value="#{det.cantidad}" />
+       					
+       				</p:column>
+       				<p:column headerText="Precio">
+       					<h:outputText value="#{det.precio}" />
+       				</p:column>
+       				
+       			</p:dataTable>
+       			
+       			<p:commandButton value="Crear Pedido" actionListener="#{comercial.registrarFactura}" action="listadoPedidos"/>
+       			
+       		</p:panel>
+       	</p:panelGrid>
+	</h:form>
+</h:body>
+</html>

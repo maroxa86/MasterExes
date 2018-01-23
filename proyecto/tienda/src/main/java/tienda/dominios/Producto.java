@@ -1,10 +1,9 @@
 package tienda.dominios;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.List;
+
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -43,14 +42,14 @@ public class Producto implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "PRECIO")
-    private BigDecimal precio;
+    private Double precio;
     
     @Column(name = "STOCK")
     private Integer stock;
     
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Venta> listadoVentas;
-
+    @OneToMany
+    private List<Detalle> listadoDetalles;
+    
     public Producto() {
     }
 
@@ -58,7 +57,7 @@ public class Producto implements Serializable {
         this.id = id;
     }
 
-    public Producto(Integer id, String nombre, BigDecimal precio, Integer stock) {
+    public Producto(Integer id, String nombre, Double precio, Integer stock) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
@@ -81,11 +80,11 @@ public class Producto implements Serializable {
         this.nombre = nombre;
     }
 
-    public BigDecimal getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(BigDecimal precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
 
@@ -97,12 +96,12 @@ public class Producto implements Serializable {
         this.stock = stock;
     }
 
-    public List<Venta> getListadoVentas() {
-		return listadoVentas;
+	public List<Detalle> getListadoDetalles() {
+		return listadoDetalles;
 	}
 
-	public void setListadoVentas(List<Venta> listadoVentas) {
-		this.listadoVentas = listadoVentas;
+	public void setListadoDetalles(List<Detalle> listadoDetalles) {
+		this.listadoDetalles = listadoDetalles;
 	}
 
 	@Override

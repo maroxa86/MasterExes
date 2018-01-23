@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,8 +28,6 @@ public class Cliente implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @Id
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CLIENTE_SEQ")
     @SequenceGenerator(sequenceName = "CLIENTE_SEQ", allocationSize = 1, name = "CLIENTE_SEQ")
@@ -58,9 +55,9 @@ public class Cliente implements Serializable {
     @Column(name = "COMISION")
     private Double comision;
     
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Venta> listadoVentas;
-
+    @OneToMany
+    private List<Factura> listadoFacturas;
+    
     public Cliente() {
     }
 
@@ -122,12 +119,12 @@ public class Cliente implements Serializable {
 		this.trabajador = trabajador;
 	}
 
-	public List<Venta> getListadoVentas() {
-		return listadoVentas;
+	public List<Factura> getListadoFacturas() {
+		return listadoFacturas;
 	}
 
-	public void setListadoVentas(List<Venta> listadoVentas) {
-		this.listadoVentas = listadoVentas;
+	public void setListadoFacturas(List<Factura> listadoFacturas) {
+		this.listadoFacturas = listadoFacturas;
 	}
 
 	@Override

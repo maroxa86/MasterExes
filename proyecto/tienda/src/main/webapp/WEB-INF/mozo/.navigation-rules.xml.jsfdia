@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#inventarioAlmacen.xhtml"
+  PATH="/inventarioAlmacen.xhtml" SHAPE="336,144,50,89" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#inventarioAlmacen.xhtml:0" NAME="item"
+   PATH="/inventarioAlmacen.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="perfil::#mozoAlmacen.xhtml" NAME="output"
+    PATH="/mozoAlmacen.xhtml" TARGET="rules:#mozoAlmacen.xhtml"
+    TITLE="perfil" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="inventario::#inventarioAlmacen.xhtml"
+    NAME="output1" PATH="/inventarioAlmacen.xhtml"
+    TARGET="rules:#inventarioAlmacen.xhtml" TITLE="inventario" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="newProducto::#newProducto.xhtml"
+    NAME="output2" PATH="/newProducto.xhtml"
+    TARGET="rules:#newProducto.xhtml" TITLE="newProducto" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="editarProducto::#editProducto.xhtml"
+    NAME="output3" PATH="/editProducto.xhtml"
+    TARGET="rules:#editProducto.xhtml" TITLE="editarProducto" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#newProducto.xhtml" PATH="/newProducto.xhtml"
+  SHAPE="752,128,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#newProducto.xhtml:0" NAME="item"
+   PATH="/newProducto.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="inventario::#inventarioAlmacen.xhtml"
+    NAME="output" PATH="/inventarioAlmacen.xhtml"
+    TARGET="rules:#inventarioAlmacen.xhtml" TITLE="inventario" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#editProducto.xhtml"
+  PATH="/editProducto.xhtml" SHAPE="752,224,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#editProducto.xhtml:0" NAME="item"
+   PATH="/editProducto.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="inventario::#inventarioAlmacen.xhtml"
+    NAME="output" PATH="/inventarioAlmacen.xhtml"
+    TARGET="rules:#inventarioAlmacen.xhtml" TITLE="inventario" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#mozoAlmacen.xhtml" PATH="/mozoAlmacen.xhtml"
+  SHAPE="64,160,50,57" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#mozoAlmacen.xhtml:0" NAME="item"
+   PATH="/mozoAlmacen.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="perfil::#mozoAlmacen.xhtml" NAME="output"
+    PATH="/mozoAlmacen.xhtml" TARGET="rules:#mozoAlmacen.xhtml"
+    TITLE="perfil" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="inventario::#inventarioAlmacen.xhtml"
+    NAME="output1" PATH="/inventarioAlmacen.xhtml"
+    TARGET="rules:#inventarioAlmacen.xhtml" TITLE="inventario" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>
