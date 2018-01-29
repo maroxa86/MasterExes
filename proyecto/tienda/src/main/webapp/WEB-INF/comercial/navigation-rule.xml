@@ -12,6 +12,10 @@
 			<from-outcome>crearPedido</from-outcome>
 			<to-view-id>/crearPedido.xhtml</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>pedidos</from-outcome>
+			<to-view-id>/pedidos.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	
 	<navigation-rule>

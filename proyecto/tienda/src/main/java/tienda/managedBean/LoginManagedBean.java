@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import tienda.dominios.Trabajador;
 import tienda.dominios.Usuario;
 import tienda.service.LoginService;
-import tinda.utils.SessionUtil;
+import tienda.utils.SessionUtil;
 
 @ManagedBean(name = "login")
 @SessionScoped

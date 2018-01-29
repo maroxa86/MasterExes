@@ -15,7 +15,6 @@ import tienda.dominios.Cliente;
 import tienda.dominios.Detalle;
 import tienda.dominios.Factura;
 import tienda.dominios.Producto;
-import tienda.dominios.pk.DetallePK;
 import tienda.service.ClienteService;
 import tienda.service.FacturaService;
 import tienda.service.ProductoService;
@@ -49,6 +48,7 @@ public class ComercialManagedBean {
 	private boolean renderProductoZone = false;
 	private List<Detalle> listaDetalle;
 	private Factura factura;
+	private List<Factura> listadoFacturas;
 	
 	public String clientes(){
 		setListadoClientes(clienteService.getListadoClientes());
@@ -106,11 +106,9 @@ public class ComercialManagedBean {
 			factura = new Factura(cliente, new Date(), null);
 		}
 		
-		DetallePK detallePK = new DetallePK(listaDetalle.size() + 1, null);
-		
 		Producto producto = productoService.getProducto(idProducto);
 		
-		Detalle detalle = new Detalle(detallePK, producto, cantidad, producto.getPrecio());
+		Detalle detalle = new Detalle(listaDetalle.size() + 1, null, producto, cantidad, producto.getPrecio());
 		
 		listaDetalle.add(detalle);
 		
@@ -121,6 +119,11 @@ public class ComercialManagedBean {
 			facturaService.insertFactura(factura, listaDetalle);
 			factura = null;
 		}
+	}
+	
+	public String pedidos(){
+		this.setListadoFacturas(facturaService.getListadoFacturaByIdUsuario(loginManagedBean.getDatosTrabajador().getId()));
+		return "pedidos";
 	}
 	
 	public void consultarSueldo(){
@@ -262,5 +265,13 @@ public class ComercialManagedBean {
 	public void setFactura(Factura factura) {
 		this.factura = factura;
 	}
-	
+
+	public List<Factura> getListadoFacturas() {
+		return listadoFacturas;
+	}
+
+	public void setListadoFacturas(List<Factura> listadoFacturas) {
+		this.listadoFacturas = listadoFacturas;
+	}
+		
 }

@@ -10,6 +10,8 @@
    <PROCESS-ITEM-OUTPUT ID="crearPedido::#crearPedido.xhtml"
     NAME="output1" PATH="/crearPedido.xhtml"
     TARGET="rules:#crearPedido.xhtml" TITLE="crearPedido" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="pedidos::#pedidos.xhtml" NAME="output2"
+    PATH="/pedidos.xhtml" TARGET="rules:#pedidos.xhtml" TITLE="pedidos" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#clientes.xhtml" PATH="/clientes.xhtml"
@@ -54,4 +56,6 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#listadoPedidos.xhtml"
   PATH="/listadoPedidos.xhtml" SHAPE="304,321,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pedidos.xhtml" PATH="/pedidos.xhtml"
+  SHAPE="304,33,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

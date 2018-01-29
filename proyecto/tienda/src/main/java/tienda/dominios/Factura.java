@@ -6,18 +6,25 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="Factura")
+@NamedQueries({
+	@NamedQuery(name="listadoFacturaByUsuario", query="SELECT factura FROM Factura factura INNER JOIN factura.IdCliente cliente WHERE cliente.trabajador.id = :idTrabajador")
+})
 public class Factura implements Serializable{
 
 	private static final long serialVersionUID = 6590902736659221877L;
@@ -37,9 +44,15 @@ public class Factura implements Serializable{
 	@NotNull
 	private Date fechaFactura;
 	
-	@OneToMany
+	@OneToMany(mappedBy="factura", fetch=FetchType.EAGER)
 	private List<Detalle> listadoDetalles;
-
+	
+	@Column(name="PROCESADO")
+	private Integer procesado;
+	
+	@Transient
+	private Double totalFactura;
+	
 	public Factura() {
 		super();
 	}
@@ -88,6 +101,22 @@ public class Factura implements Serializable{
 
 	public void setListadoDetalles(List<Detalle> listadoDetalles) {
 		this.listadoDetalles = listadoDetalles;
+	}	
+
+	public Integer getProcesado() {
+		return procesado;
+	}
+
+	public void setProcesado(Integer procesado) {
+		this.procesado = procesado;
+	}
+
+	public Double getTotalFactura() {
+		return totalFactura;
+	}
+
+	public void setTotalFactura(Double totalFactura) {
+		this.totalFactura = totalFactura;
 	}
 
 	@Override

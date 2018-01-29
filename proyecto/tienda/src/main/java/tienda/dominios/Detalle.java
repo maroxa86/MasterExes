@@ -2,14 +2,17 @@ package tienda.dominios;
 
 import java.io.Serializable;
 
-import javax.persistence.EmbeddedId;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
-import tienda.dominios.pk.DetallePK;
 
 @Entity
 @Table(name="DETALLE")
@@ -17,12 +20,21 @@ public class Detalle implements Serializable {
 
 	private static final long serialVersionUID = 3933421313136319558L;
 
-	@EmbeddedId
-	private DetallePK detallePK;
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DETALLE_SEQ")
+    @SequenceGenerator(sequenceName = "DETALLE_SEQ", allocationSize = 1, name = "DETALLE_SEQ")
+	private Integer id;
+	
+	@Column(name="NUM_DETALLE")
+	private Integer numDetalle;
+	
+	@ManyToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name="NUM_FACTURA")
+	private Factura factura;
 	
 	@NotNull
 	@ManyToOne
-	@JoinColumn(name="ID_PRODUCTO", referencedColumnName="ID")
+	@JoinColumn(name="ID_PRODUCTO")
 	private Producto producto;
 	
 	@NotNull
@@ -35,20 +47,49 @@ public class Detalle implements Serializable {
 		super();
 	}
 
-	public Detalle(DetallePK detallePK, Producto producto, Integer cantidad, Double precio) {
+	public Detalle(Integer numDetalle, Factura factura, Producto producto, Integer cantidad,
+			Double precio) {
 		super();
-		this.detallePK = detallePK;
+		this.numDetalle = numDetalle;
+		this.factura = factura;
+		this.producto = producto;
+		this.cantidad = cantidad;
+		this.precio = precio;
+	}
+	
+	public Detalle(Integer id, Integer numDetalle, Factura factura, Producto producto, Integer cantidad,
+			Double precio) {
+		super();
+		this.id = id;
+		this.numDetalle = numDetalle;
+		this.factura = factura;
 		this.producto = producto;
 		this.cantidad = cantidad;
 		this.precio = precio;
 	}
 
-	public DetallePK getDetallePK() {
-		return detallePK;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setDetallePK(DetallePK detallePK) {
-		this.detallePK = detallePK;
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	public Integer getNumDetalle() {
+		return numDetalle;
+	}
+
+	public void setNumDetalle(Integer numDetalle) {
+		this.numDetalle = numDetalle;
+	}
+
+	public Factura getFactura() {
+		return factura;
+	}
+
+	public void setFactura(Factura factura) {
+		this.factura = factura;
 	}
 
 	public Producto getProducto() {
@@ -79,7 +120,9 @@ public class Detalle implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((detallePK == null) ? 0 : detallePK.hashCode());
+		result = prime * result + ((factura == null) ? 0 : factura.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((numDetalle == null) ? 0 : numDetalle.hashCode());
 		return result;
 	}
 
@@ -92,10 +135,20 @@ public class Detalle implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Detalle other = (Detalle) obj;
-		if (detallePK == null) {
-			if (other.detallePK != null)
+		if (factura == null) {
+			if (other.factura != null)
 				return false;
-		} else if (!detallePK.equals(other.detallePK))
+		} else if (!factura.equals(other.factura))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (numDetalle == null) {
+			if (other.numDetalle != null)
+				return false;
+		} else if (!numDetalle.equals(other.numDetalle))
 			return false;
 		return true;
 	}

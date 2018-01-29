@@ -47,7 +47,7 @@ public class Producto implements Serializable {
     @Column(name = "STOCK")
     private Integer stock;
     
-    @OneToMany
+    @OneToMany(mappedBy="producto")
     private List<Detalle> listadoDetalles;
     
     public Producto() {
