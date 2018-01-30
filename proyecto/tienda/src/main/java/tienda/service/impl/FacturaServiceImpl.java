@@ -66,5 +66,18 @@ public class FacturaServiceImpl implements FacturaService{
 		facturaDAO.insertar(factura);
 		
 	}
+
+	@Override
+	public List<Factura> getListadoPedidosMensual(int idUsuario) {
+		List<Factura> listadoFacturas = facturaDAO.getListadoFacturaMensual(idUsuario);
+		for(Factura factura : listadoFacturas){
+			double totalFactura = 0;
+			for(Detalle detalle : factura.getListadoDetalles()){
+				totalFactura += detalle.getCantidad() * detalle.getPrecio();
+			}
+			factura.setTotalFactura(totalFactura);
+		}
+		return listadoFacturas;
+	}
 		
 }

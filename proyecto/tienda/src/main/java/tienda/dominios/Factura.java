@@ -23,7 +23,17 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name="Factura")
 @NamedQueries({
-	@NamedQuery(name="listadoFacturaByUsuario", query="SELECT factura FROM Factura factura INNER JOIN factura.IdCliente cliente WHERE cliente.trabajador.id = :idTrabajador")
+	@NamedQuery(name="listadoFacturaByUsuario", query="SELECT factura "
+														+ "FROM Factura factura "
+														+ "INNER JOIN factura.IdCliente cliente "
+														+ "WHERE cliente.trabajador.id = :idTrabajador"),
+	@NamedQuery(name="listadoFacturaMensualByUsuario", query="SELECT factura FROM Factura factura "
+																+ "INNER JOIN factura.IdCliente cliente "
+																+ "WHERE cliente.trabajador.id = :idTrabajador "
+																+ "AND factura.fechaFactura BETWEEN trunc(sysdate,'month') "
+																+ "AND last_day(sysdate) AND factura.procesado = 1"
+																)
+	
 })
 public class Factura implements Serializable{
 
@@ -52,6 +62,9 @@ public class Factura implements Serializable{
 	
 	@Transient
 	private Double totalFactura;
+	
+	@Transient
+	private Double beneficioFactura;
 	
 	public Factura() {
 		super();
@@ -117,6 +130,14 @@ public class Factura implements Serializable{
 
 	public void setTotalFactura(Double totalFactura) {
 		this.totalFactura = totalFactura;
+	}
+
+	public Double getBeneficioFactura() { 
+		return ((this.getTotalFactura() * this.getIdCliente().getComision()) /100);
+	}
+
+	public void setBeneficioFactura(Double beneficioFactura) {
+		this.beneficioFactura = beneficioFactura;
 	}
 
 	@Override

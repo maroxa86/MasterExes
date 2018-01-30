@@ -12,6 +12,8 @@
     TARGET="rules:#crearPedido.xhtml" TITLE="crearPedido" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT ID="pedidos::#pedidos.xhtml" NAME="output2"
     PATH="/pedidos.xhtml" TARGET="rules:#pedidos.xhtml" TITLE="pedidos" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="sueldo::#sueldo.xhtml" NAME="output3"
+    PATH="/sueldo.xhtml" TARGET="rules:#sueldo.xhtml" TITLE="sueldo" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#clientes.xhtml" PATH="/clientes.xhtml"
@@ -58,4 +60,6 @@
   PATH="/listadoPedidos.xhtml" SHAPE="304,321,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#pedidos.xhtml" PATH="/pedidos.xhtml"
   SHAPE="304,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#sueldo.xhtml" PATH="/sueldo.xhtml"
+  SHAPE="320,561,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

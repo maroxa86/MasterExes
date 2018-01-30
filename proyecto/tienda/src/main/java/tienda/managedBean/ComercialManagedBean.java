@@ -49,6 +49,7 @@ public class ComercialManagedBean {
 	private List<Detalle> listaDetalle;
 	private Factura factura;
 	private List<Factura> listadoFacturas;
+	private Double sueldo;
 	
 	public String clientes(){
 		setListadoClientes(clienteService.getListadoClientes());
@@ -126,8 +127,14 @@ public class ComercialManagedBean {
 		return "pedidos";
 	}
 	
-	public void consultarSueldo(){
+	public String consultarSueldo(){
+		sueldo = new Double(0);
+		this.setListadoFacturas(facturaService.getListadoPedidosMensual(loginManagedBean.getDatosTrabajador().getId()));
 		
+		for(Factura factura : this.getListadoFacturas()){
+			sueldo += factura.getTotalFactura();
+		}
+		return "sueldo";
 	}
 	
 	public List<Cliente> getListadoClientes() {
@@ -272,6 +279,14 @@ public class ComercialManagedBean {
 
 	public void setListadoFacturas(List<Factura> listadoFacturas) {
 		this.listadoFacturas = listadoFacturas;
+	}
+
+	public Double getSueldo() {
+		return sueldo;
+	}
+
+	public void setSueldo(Double sueldo) {
+		this.sueldo = sueldo;
 	}
 		
 }

@@ -20,5 +20,12 @@ public class FacturaDAOImpl extends AbstractGenericDAOImpl<Factura, Long> implem
         consulta.setParameter("idTrabajador", idUsuario);
         return consulta.getResultList();
 	}
+
+	@Override
+	public List<Factura> getListadoFacturaMensual(int idUsuario) {
+		TypedQuery<Factura> consulta = getManager().createNamedQuery("listadoFacturaMensualByUsuario", Factura.class);
+        consulta.setParameter("idTrabajador", idUsuario);
+        return consulta.getResultList();
+	}
 	
 }

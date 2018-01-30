@@ -44,7 +44,13 @@
 	            <p:columnGroup type="footer">
 	                <p:row>
 	                    <p:column footerText="Total Factura: " style="text-align:right"/>
-	                    <p:column colspan="2" footerText= "#{factura.totalFactura}" />
+	                    <p:column colspan="2">
+	                    	<f:facet name="footer">
+		                    	<h:outputText value="#{factura.totalFactura}">
+		                    		<f:convertNumber pattern="###,###.00"/>
+		                    	</h:outputText>
+	                    	</f:facet>
+	                    </p:column>
 	                </p:row>
 	            </p:columnGroup>
 	        </p:subTable>

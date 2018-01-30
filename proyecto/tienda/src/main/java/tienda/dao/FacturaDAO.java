@@ -8,4 +8,6 @@ public interface FacturaDAO extends GenericDAO<Factura, Long>{
 
 	List<Factura> getListadoFacturasByIdUsuario(int idUsuario);
 
+	List<Factura> getListadoFacturaMensual(int idUsuario);
+
 }
