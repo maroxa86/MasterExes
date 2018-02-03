@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>Facelet Title</title>
+</h:head>
+<h:body>
+    <h:form>
+		<p>Welcome #{login.user} Mozo Almacen</p>
+		<p:menubar>
+		   	<p:menuitem value="Perfil" action="#{login.perfil}"/>
+		   	<p:menuitem value="Inventario Almacen" action="#{almacen.getInventarioProductos}" />
+		   	<p:menuitem value="Pedidos Pendientes" action="#{almacen.pedidosPendientes}"/>
+		   	<p:menuitem value="Logout" action="#{login.logout}"/>
+		</p:menubar>
+		
+		<p:dataTable var="factura" value="#{almacen.factura}">
+			<p:columnGroup>
+	            <p:row>
+	                <p:column headerText="Producto" />
+	                <p:column headerText="Cantidad" />
+	                <p:column headerText="Correcto" />
+	            </p:row>
+			</p:columnGroup>
+			<p:subTable var="detalle" value="#{factura.listadoDetalles}">
+	            <f:facet name="header">
+	                <h:outputText value="Número Factura: #{factura.numFactura}" />
+	            </f:facet>
+	            <p:column>
+	                <h:outputText value="#{detalle.producto.nombre}" />
+	            </p:column>
+	            <p:column>
+	                <h:outputText value="#{detalle.cantidad}" />
+	            </p:column>
+           		<p:column>
+           			<h:outputText value="Correcto" rendered="#{detalle.hayStock}"/>
+           			<h:outputText value="No hay suficiente stock" rendered="#{!detalle.hayStock}" />
+           		</p:column>
+	        </p:subTable>
+		</p:dataTable>
+		<h:commandButton value="Finalizar Factura" actionListener="#{almacen.finalizarFactura}" action="pedidosPendientes" rendered="#{almacen.factura.finalizar}"></h:commandButton>
+		<h:commandButton value="Volver" action="pedidosPendientes"/>
+    </h:form>
+</h:body>
+</html>

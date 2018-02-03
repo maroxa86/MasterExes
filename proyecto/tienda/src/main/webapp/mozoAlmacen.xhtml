@@ -15,6 +15,7 @@
             <p:menubar>
                	<p:menuitem value="Perfil" action="#{login.perfil}"/>
                	<p:menuitem value="Inventario Almacen" action="#{almacen.getInventarioProductos}" />
+               	<p:menuitem value="Pedidos Pendientes" action="#{almacen.pedidosPendientes}"/>
                	<p:menuitem value="Logout" action="#{login.logout}"/>
             </p:menubar>
             <h:outputLabel value="Nombre: "/><h:outputLabel value="#{login.datosTrabajador.nombre}"/><br/>

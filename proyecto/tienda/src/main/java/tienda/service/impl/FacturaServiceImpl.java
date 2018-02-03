@@ -8,8 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import tienda.dao.DetalleDAO;
 import tienda.dao.FacturaDAO;
+import tienda.dao.ProductoDAO;
 import tienda.dominios.Detalle;
 import tienda.dominios.Factura;
+import tienda.dominios.Producto;
 import tienda.service.FacturaService;
 
 @Service(value="facturaService")
@@ -17,6 +19,7 @@ public class FacturaServiceImpl implements FacturaService{
 
 	private FacturaDAO facturaDAO;
 	private DetalleDAO detalleDAO;
+	private ProductoDAO productoDAO;
 	
 	@Override
 	@Transactional
@@ -78,6 +81,37 @@ public class FacturaServiceImpl implements FacturaService{
 			factura.setTotalFactura(totalFactura);
 		}
 		return listadoFacturas;
+	}
+
+	@Override
+	public List<Factura> getListadoFacturasPendientes() {
+		return facturaDAO.getListadoFacturasPendientes();
+	}
+
+	@Override
+	public Factura getFacturaById(Long numFactura) {
+		return facturaDAO.buscarPorClave(numFactura);
+	}
+
+	@Override
+	@Transactional
+	public void finalizarFactura(Factura factura) {
+		for(Detalle detalle : factura.getListadoDetalles()){
+			Producto producto = detalle.getProducto();
+			producto.setStock(producto.getStock() - detalle.getCantidad());
+			productoDAO.salvar(producto);
+		}
+		factura.setProcesado(1);
+		facturaDAO.salvar(factura);
+	}
+
+	public ProductoDAO getProductoDAO() {
+		return productoDAO;
+	}
+
+	@Autowired
+	public void setProductoDAO(ProductoDAO productoDAO) {
+		this.productoDAO = productoDAO;
 	}
 		
 }

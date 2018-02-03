@@ -116,6 +116,10 @@ public class Detalle implements Serializable {
 		this.precio = precio;
 	}
 
+	public boolean isHayStock() {
+		return this.cantidad <= this.producto.getStock();
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -46,6 +46,20 @@
    <PROCESS-ITEM-OUTPUT ID="inventario::#inventarioAlmacen.xhtml"
     NAME="output1" PATH="/inventarioAlmacen.xhtml"
     TARGET="rules:#inventarioAlmacen.xhtml" TITLE="inventario" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="pedidosPendientes::#pedidosPendientes.xhtml"
+    NAME="output2" PATH="/pedidosPendientes.xhtml"
+    TARGET="rules:#pedidosPendientes.xhtml" TITLE="pedidosPendientes" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pedidosPendientes.xhtml"
+  PATH="/pedidosPendientes.xhtml" SHAPE="304,353,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pedidosPendientes.xhtml:0" NAME="item"
+   PATH="/pedidosPendientes.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="procesarPedido::#procesoPedido.xhtml"
+    NAME="output" PATH="/procesoPedido.xhtml"
+    TARGET="rules:#procesoPedido.xhtml" TITLE="procesarPedido" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#procesoPedido.xhtml"
+  PATH="/procesoPedido.xhtml" SHAPE="560,449,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

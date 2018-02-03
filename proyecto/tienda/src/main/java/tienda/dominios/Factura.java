@@ -27,12 +27,16 @@ import javax.validation.constraints.NotNull;
 														+ "FROM Factura factura "
 														+ "INNER JOIN factura.IdCliente cliente "
 														+ "WHERE cliente.trabajador.id = :idTrabajador"),
-	@NamedQuery(name="listadoFacturaMensualByUsuario", query="SELECT factura FROM Factura factura "
+	@NamedQuery(name="listadoFacturaMensualByUsuario", query="SELECT factura "
+																+ "FROM Factura factura "
 																+ "INNER JOIN factura.IdCliente cliente "
 																+ "WHERE cliente.trabajador.id = :idTrabajador "
 																+ "AND factura.fechaFactura BETWEEN trunc(sysdate,'month') "
 																+ "AND last_day(sysdate) AND factura.procesado = 1"
-																)
+																),
+	@NamedQuery(name="listadoFacturasPendientes", query="SELECT factura "
+															+ "FROM Factura factura "
+															+ "WHERE factura.procesado = 0")
 	
 })
 public class Factura implements Serializable{
@@ -65,6 +69,9 @@ public class Factura implements Serializable{
 	
 	@Transient
 	private Double beneficioFactura;
+	
+	@Transient
+	private boolean finalizar;
 	
 	public Factura() {
 		super();
@@ -138,6 +145,15 @@ public class Factura implements Serializable{
 
 	public void setBeneficioFactura(Double beneficioFactura) {
 		this.beneficioFactura = beneficioFactura;
+	}
+
+	public boolean isFinalizar() {
+		for(Detalle detalle : this.listadoDetalles){
+			if(!detalle.isHayStock()){
+				return false;
+			}
+		}
+		return true;
 	}
 
 	@Override

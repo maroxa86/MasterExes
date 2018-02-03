@@ -6,7 +6,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
+import tienda.dominios.Factura;
 import tienda.dominios.Producto;
+import tienda.service.FacturaService;
 import tienda.service.ProductoService;
 
 @ManagedBean(name = "almacen")
@@ -19,10 +21,15 @@ public class AlmacenManagedBean {
 	private String precio;
 	private String stock;
 	private Producto infoProducto;
+	private List<Factura> listadoFacturasPendientes;
+	private Factura factura;
 
 	@ManagedProperty("#{productoService}")
 	private ProductoService productoBean;
 
+	@ManagedProperty("#{facturaService}")
+	private FacturaService facturaService;
+	
 	public ProductoService getProductoBean() {
 		return productoBean;
 	}
@@ -69,6 +76,29 @@ public class AlmacenManagedBean {
 		productoBean.saveProducto(infoProducto);
 	}
 
+	public String pedidosPendientes(){
+		this.setListadoFacturasPendientes(facturaService.getListadoFacturasPendientes());
+		return "pedidosPendientes";
+	}
+	
+	public String procesarPedido(String numFactura){
+		this.setFactura(facturaService.getFacturaById(new Long(numFactura)));
+		return "procesarPedido";
+	}
+	
+	public boolean comprobarStock(int cantidad, int stock){
+		if(cantidad <= stock){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	public void finalizarFactura(){
+		facturaService.finalizarFactura(factura);
+	}
+	
 	public List<Producto> getListadoProductos() {
 		return listadoProductos;
 	}
@@ -108,4 +138,29 @@ public class AlmacenManagedBean {
 	public void setInfoProducto(Producto infoProducto) {
 		this.infoProducto = infoProducto;
 	}
+
+	public List<Factura> getListadoFacturasPendientes() {
+		return listadoFacturasPendientes;
+	}
+
+	public void setListadoFacturasPendientes(List<Factura> listadoFacturasPendientes) {
+		this.listadoFacturasPendientes = listadoFacturasPendientes;
+	}
+
+	public FacturaService getFacturaService() {
+		return facturaService;
+	}
+
+	public void setFacturaService(FacturaService facturaService) {
+		this.facturaService = facturaService;
+	}
+
+	public Factura getFactura() {
+		return factura;
+	}
+
+	public void setFactura(Factura factura) {
+		this.factura = factura;
+	}
+	
 }
