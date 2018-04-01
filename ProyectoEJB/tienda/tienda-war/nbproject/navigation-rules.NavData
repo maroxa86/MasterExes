@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Faces Configuration Only" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="login.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="logout.xhtml" x="400" y="450" zoom="true"/>
+        <Node id="secured/comun/perfil.xhtml" x="900" y="150" zoom="true"/>
+        <Node id="secured/comun/inventarioFragment.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="secured/admin/inventario.xhtml" x="10" y="50" zoom="true"/>
+        <Node id="secured/comercial/comercial.xhtml" x="400" y="300" zoom="true"/>
+        <Node id="secured/admin/crearUsuario.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="secured/admin/admin.xhtml" x="150" y="450" zoom="true"/>
+        <Node id="secured/mozoAlmacen/mozoAlmacen.xhtml" x="650" y="300" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>

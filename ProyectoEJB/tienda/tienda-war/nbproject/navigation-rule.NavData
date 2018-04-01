@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Faces Configuration Only" version="2">
+    <Scope Scope="Faces Configuration Only">
+        <Node id="secured/admin/crearUsuario.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="secured/admin/admin.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="secured/admin/inventarioAlmacenAdmin.xhtml" x="150" y="300" zoom="true"/>
+    </Scope>
+    <Scope Scope="Project">
+        <Node id="login.xhtml" x="696" y="463" zoom="true"/>
+        <Node id="logout.xhtml" x="650" y="300" zoom="true"/>
+        <Node id="secured/admin/inventarioAlmacenAdmin.xhtml" x="11" y="444" zoom="true"/>
+        <Node id="secured/comercial/comercial.xhtml" x="900" y="150" zoom="true"/>
+        <Node id="secured/admin/crearUsuario.xhtml" x="44" y="26" zoom="true"/>
+        <Node id="secured/admin/admin.xhtml" x="64" y="180" zoom="true"/>
+        <Node id="secured/mozoAlmacen/mozoAlmacen.xhtml" x="533" y="54" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations">
+        <Node id="secured/comercial/comercial.xhtml" x="636" y="165" zoom="true"/>
+        <Node id="login.xhtml" x="400" y="450" zoom="true"/>
+        <Node id="secured/admin/admin.xhtml" x="227" y="112" zoom="false"/>
+        <Node id="secured/mozoAlmacen/mozoAlmacen.xhtml" x="10" y="47" zoom="true"/>
+    </Scope>
+</Scene>

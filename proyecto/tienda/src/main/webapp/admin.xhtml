@@ -18,12 +18,19 @@
            	<p:menuitem value="Crear Usuario" action="#{usuario.crearUsuario}" />
             <p:menuitem value="Logout" action="#{login.logout}"/>
         </p:menubar>
-        <h:outputLabel value="Nombre: "/><h:outputLabel value="#{login.datosTrabajador.nombre}"/><br/>
-       	<h:outputLabel value="Primer Apellido: "/><h:outputLabel value="#{login.datosTrabajador.apellido1}"/><br/>
-       	<h:outputLabel value="Segundo Apellido: "/><h:outputLabel value="#{login.datosTrabajador.apellido2}"/><br/>
-       	<h:outputLabel value="Fecha Naciemiento: "/><h:outputLabel value="#{login.datosTrabajador.fechaNacimiento}"/><br/>
-       	<h:outputLabel value="Fecha Incorporacion: "/><h:outputLabel value="#{login.datosTrabajador.fechaIncorporacion}"/><br/>
-       	<h:outputLabel value="Tipo Trabajador: "/><h:outputLabel value="#{login.datosTrabajador.tipoTrabajador.nombre}"/><br/>
+        
+        <h:panelGrid>
+        	<p:outputLabel value="Tienes nuevos mensajes" rendered="#{mensajes.existsMensajesPendientes()}" style="color: red"/>
+        </h:panelGrid>
+        
+        <h:panelGrid columns="2">
+	        <h:outputLabel value="Nombre: "/><h:outputLabel value="#{login.datosTrabajador.nombre}"/>
+	       	<h:outputLabel value="Primer Apellido: "/><h:outputLabel value="#{login.datosTrabajador.apellido1}"/>
+	       	<h:outputLabel value="Segundo Apellido: "/><h:outputLabel value="#{login.datosTrabajador.apellido2}"/>
+	       	<h:outputLabel value="Fecha Naciemiento: "/><h:outputLabel value="#{login.datosTrabajador.fechaNacimiento}"/>
+	       	<h:outputLabel value="Fecha Incorporacion: "/><h:outputLabel value="#{login.datosTrabajador.fechaIncorporacion}"/>
+	       	<h:outputLabel value="Tipo Trabajador: "/><h:outputLabel value="#{login.datosTrabajador.tipoTrabajador.nombre}"/>
+       	</h:panelGrid>
 	</h:form>
 </h:body>
 </html>

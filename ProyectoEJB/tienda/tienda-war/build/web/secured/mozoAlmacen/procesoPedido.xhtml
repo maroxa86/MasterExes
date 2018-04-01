@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../../WEB-INF/facelets/template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="menu">
+        <p:menuitem value="Inventario Almacen" action="#{almacen.getInventarioProductos}" />
+        <p:menuitem value="Pedidos Pendientes" action="#{almacen.pedidosPendientes}"/>
+    </ui:define>
+
+    <ui:define name="content">
+        <p:dataTable var="factura" value="#{almacen.factura}">
+            <p:columnGroup>
+                <p:row>
+                    <p:column headerText="Producto" />
+                    <p:column headerText="Cantidad" />
+                    <p:column headerText="Correcto" />
+                </p:row>
+            </p:columnGroup>
+            <p:subTable var="detalle" value="#{factura.listadoDetalles}">
+                <f:facet name="header">
+                    <h:outputText value="Número Factura: #{factura.numFactura}" />
+                </f:facet>
+                <p:column>
+                    <h:outputText value="#{detalle.producto.nombre}" />
+                </p:column>
+                <p:column>
+                    <h:outputText value="#{detalle.cantidad}" />
+                </p:column>
+                <p:column>
+                    <h:outputText value="Correcto" rendered="#{detalle.hayStock}"/>
+                    <h:outputText value="No hay suficiente stock" rendered="#{!detalle.hayStock}" />
+                </p:column>
+            </p:subTable>
+        </p:dataTable>
+        <p:commandButton value="Finalizar Factura" actionListener="#{almacen.finalizarFactura}" 
+                         action="pedidosPendientes" rendered="#{almacen.factura.finalizar}"/>
+        <p:commandButton value="Volver" action="pedidosPendientes"/>
+    </ui:define>
+
+</ui:composition>

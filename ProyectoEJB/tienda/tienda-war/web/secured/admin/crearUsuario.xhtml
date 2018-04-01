@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../../WEB-INF/facelets/template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="menu">
+        <p:menuitem value="Inventario Almacen" action="#{almacen.getInventarioProductos}" />
+        <p:menuitem value="Mensajes" action="#{mensajes.bandejaDeEntrada}" rendered="#{mensajes.existsMensajesPendientes()}"/>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:panelGrid columns="2">
+            <p:outputLabel value="Usuario" />
+            <p:inputText value="#{usuario.user}" id="usuario" name="usuario"/>
+            
+            <p:outputLabel value="Contraseña" />
+            <p:password value="#{usuario.pwd}" id="pwd" name="pwd"/>
+            
+            <p:outputLabel value="Nombre: "/>
+            <p:inputText value="#{usuario.nombre}" id="nombre" name="nombre"/>
+            
+            <p:outputLabel value="Primer Apellido: "/>
+            <p:inputText value="#{usuario.apellido1}" id="apellido1" name="apellido1"/>
+            
+            <p:outputLabel value="Segundo Apellido: "/>
+            <p:inputText value="#{usuario.apellido2}" id="apellido2" name="apellido2"/>
+            
+            <p:outputLabel value="Fecha Nacimiento:" />
+            <p:calendar value="#{usuario.fechaNacimiento}" showOn="button" id="fechaNacimiento" name="fechaNacimiento"/>
+            
+            <p:outputLabel value="Tipo Trabajador: "/>
+            <p:selectOneMenu value="#{usuario.tipoTrabajadorId}">
+                <f:selectItem itemLabel="- Seleccione -" itemValue=""/>
+                <f:selectItems value="#{usuario.tipoTrabajadorSelectItem}"/>
+            </p:selectOneMenu>
+
+            <p:commandButton actionListener="#{usuario.newUsuario}" action="#{usuario.crearUsuario}" value="Dar de Alta" />
+        </h:panelGrid>
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../../WEB-INF/facelets/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="menu">
+        <p:menuitem value="Clientes" action="#{comercial.clientes}" />
+        <p:menuitem value="Nuevo Pedido" action="#{comercial.crearPedido}"/>
+        <p:menuitem value="Pedidos" action="#{comercial.pedidos}"/>
+    </ui:define>
+
+    <ui:define name="content">
+        <p:dataTable var="factura" value="#{comercial.listadoFacturas}">
+            <p:columnGroup type="header" >
+                <p:row>
+                    <p:column rowspan="2" headerText="Factura" />
+                    <p:column colspan="4" headerText="Información" />
+                </p:row>
+                <p:row>
+                    <p:column headerText="Cliente" />
+                    <p:column headerText="Comisión" />
+                    <p:column headerText="Total Factura" />
+                    <p:column headerText="Benefició" />
+                </p:row>
+            </p:columnGroup>
+            <p:column>
+                <p:outputLabel value="Número Factura: #{factura.numFactura}" />
+            </p:column>
+            <p:column>
+                <p:outputLabel value="#{factura.idCliente.nombre}" />
+            </p:column>
+            <p:column>
+                <p:outputLabel value="#{factura.idCliente.comision}">
+                    <f:convertNumber pattern="###,###.00"/>
+                </p:outputLabel>
+            </p:column>
+            <p:column>
+                <p:outputLabel value="#{factura.totalFactura}" >
+                    <f:convertNumber pattern="###,###.00"/>
+                </p:outputLabel>
+            </p:column>
+            <p:column>
+                <p:outputLabel value="#{factura.beneficioFactura}">
+                    <f:convertNumber pattern="###,###.00"/>
+                </p:outputLabel>
+            </p:column>
+            <p:columnGroup type="footer">
+                <p:row>
+                    <p:column footerText="Sueldo: " style="text-align:right"/>
+                    <p:column colspan="4">
+                        <f:facet name="footer">
+                            <p:outputLabel value="#{comercial.sueldo}">
+                                <f:convertNumber pattern="###,###.00"/>
+                            </p:outputLabel>
+                        </f:facet>
+                    </p:column>
+                </p:row>
+            </p:columnGroup>
+        </p:dataTable>
+    </ui:define>
+
+</ui:composition>

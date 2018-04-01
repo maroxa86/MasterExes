@@ -17,21 +17,33 @@
 			<p:menuitem value="Logout" action="#{login.logout}" />
 		</p:menubar>
 		
-		<h:outputLabel value="Usuario" /><h:inputText value="#{usuario.user}" id="usuario" name="usuario"/><br/>
-		<h:outputLabel value="Contraseña" /><h:inputSecret value="#{usuario.pwd}" id="pwd" name="pwd"/><br/>
-		<h:outputLabel value="Nombre: "/><h:inputText value="#{usuario.nombre}" id="nombre" name="nombre"/>
-       	<h:outputLabel value="Primer Apellido: "/><h:inputText value="#{usuario.apellido1}" id="apellido1" name="apellido1"/><br/>
-       	<h:outputLabel value="Segundo Apellido: "/><h:inputText value="#{usuario.apellido2}" id="apellido2" name="apellido2"/><br/>
-       	<h:outputLabel value="Tipo Trabajador: "/>
-       	
-       	<p:selectOneMenu value="#{usuario.tipoTrabajadorId}">
-       		<f:selectItem itemLabel="- Seleccione -" itemValue=""/>
-       		<f:selectItems value="#{usuario.tipoTrabajadorSelectItem}"/>
-       	</p:selectOneMenu>
-       
-		<br/>
-		
-		<h:commandButton actionListener="#{usuario.newUsuario}" action="#{usuario.crearUsuario}" value="Dar de Alta" />								
+		<p:panelGrid columns="2">
+            <p:outputLabel value="Usuario" />
+            <p:inputText value="#{usuario.user}" id="usuario" name="usuario"/>
+            
+            <p:outputLabel value="Contraseña" />
+            <p:password value="#{usuario.pwd}" id="pwd" name="pwd"/>
+            
+            <p:outputLabel value="Nombre: "/>
+            <p:inputText value="#{usuario.nombre}" id="nombre" name="nombre"/>
+            
+            <p:outputLabel value="Primer Apellido: "/>
+            <p:inputText value="#{usuario.apellido1}" id="apellido1" name="apellido1"/>
+            
+            <p:outputLabel value="Segundo Apellido: "/>
+            <p:inputText value="#{usuario.apellido2}" id="apellido2" name="apellido2"/>
+            
+            <p:outputLabel value="Fecha Nacimiento:" />
+            <p:calendar value="#{usuario.fechaNacimiento}" showOn="button" id="fechaNacimiento" name="fechaNacimiento"/>
+            
+            <p:outputLabel value="Tipo Trabajador: "/>
+            <p:selectOneMenu value="#{usuario.tipoTrabajadorId}">
+                <f:selectItem itemLabel="- Seleccione -" itemValue=""/>
+                <f:selectItems value="#{usuario.tipoTrabajadorSelectItem}"/>
+            </p:selectOneMenu>
+
+            <p:commandButton actionListener="#{usuario.newUsuario}" action="#{usuario.crearUsuario}" value="Dar de Alta" />
+        </p:panelGrid>								
 	</h:form>
 </h:body>
 </html>

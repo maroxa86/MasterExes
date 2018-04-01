@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../../WEB-INF/facelets/template.xhtml"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="menu">
+        <p:menuitem value="Crear Usuario" action="#{usuario.crearUsuario}" />
+        <p:menuitem value="Mensajes" action="#{mensajes.bandejaDeEntrada}" rendered="#{mensajes.existsMensajesPendientes()}"/>
+    </ui:define>
+
+    <ui:define name="content">
+        <ui:include src="../comun/inventarioFragment.xhtml"/>
+    </ui:define>
+
+</ui:composition>

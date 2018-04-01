@@ -18,13 +18,18 @@
 			<p:menuitem value="Logout" action="#{login.logout}" />
 		</p:menubar>
 
-		<h:outputLabel value="Nombre" />
-		<h:inputText id="nombre" name="nombre" value="#{almacen.infoProducto.nombre}"/>
-		<h:outputLabel value="Precio" />
-		<h:inputText id="precio" name="precio" value="#{almacen.infoProducto.precio}"/>
-		<h:outputLabel value="Stock" />
-		<h:inputText id="stock" name="stock" value="#{almacen.infoProducto.stock}"/>
-		<h:commandButton actionListener="#{almacen.guardarProducto}" action="#{almacen.getInventarioProductos}" value="Guardar" />
+		<h:panelGrid columns="2">
+			<p:outputLabel value="Nombre" />
+			<p:inputText id="nombre" name="nombre" value="#{almacen.infoProducto.nombre}"/>
+		
+			<p:outputLabel value="Precio" />
+			<p:inputText id="precio" name="precio" value="#{almacen.infoProducto.precio}"/>
+		
+			<p:outputLabel value="Stock" />
+			<p:inputText id="stock" name="stock" value="#{almacen.infoProducto.stock}"/>
+		
+			<p:commandButton actionListener="#{almacen.guardarProducto}" action="#{almacen.getInventarioProductos}" value="Guardar" />
+		</h:panelGrid>
 	</h:form>
 </h:body>
 </html>

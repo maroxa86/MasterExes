@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:panelGrid columns="2">
+        <p:outputLabel value="Nombre: "/>
+        <p:outputLabel value="#{login.datosTrabajador.nombre}"/>
+
+        <p:outputLabel value="Primer Apellido: "/>
+        <p:outputLabel value="#{login.datosTrabajador.apellido1}"/>
+
+        <p:outputLabel value="Segundo Apellido: "/>
+        <p:outputLabel value="#{login.datosTrabajador.apellido2}"/>
+
+        <p:outputLabel value="Fecha Naciemiento: "/>
+        <p:outputLabel value="#{login.datosTrabajador.fechaNacimiento}">
+            <f:convertDateTime pattern="dd/MM/yyyy"/>
+        </p:outputLabel>
+
+        <p:outputLabel value="Fecha Incorporacion: "/>
+        <p:outputLabel value="#{login.datosTrabajador.fechaIncorporacion}">
+            <f:convertDateTime pattern="dd/MM/yyyy"/>
+        </p:outputLabel>
+
+        <p:outputLabel value="Tipo Trabajador: "/>
+        <p:outputLabel value="#{login.datosTrabajador.tipoTrabajador.nombre}"/>
+    </h:panelGrid>
+</ui:composition>
